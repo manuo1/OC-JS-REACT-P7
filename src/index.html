@@ -14,7 +14,7 @@
   </head>
   <body class="max-w-[1440px] mx-auto font-[Manrope]">
     <!-- #################### Header #################### -->
-    <header class="hero-section">
+    <header>
       <div class="h-[667px] bg-[url(/src/assets/images/header_background.png)] bg-cover">
         <!-- ==================== Logo ==================== -->
         <div class="relative pl-[69px] pt-[51px]">
@@ -55,5 +55,225 @@
         </div>
       </div>
     </header>
+    <!-- #################### Filters Section #################### -->
+    <section class="bg-[#EDEDED] pt-[21px] px-[104px] text-[16px] z-0">
+      <!-- ==================== Filters Header ==================== -->
+      <div class="flex justify-between h-[56px]">
+        <!-- -------------------- Dropdowns group -------------------- -->
+
+        <div class="flex justify-start gap-[65px] z-1">
+          <!--  Dropdown Filter 1  -->
+
+          <div class="min-w-[100px] max-w-[195px]">
+            <!-- Zone 1 : Toggle button -->
+            <button
+              type="button"
+              class="w-full flex justify-between items-center h-[56px] px-[16px] gap-[58px] font-[500] bg-white rounded-[11px] shadow"
+              aria-expanded="false"
+            >
+              <span>Ingrédients</span>
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            </button>
+
+            <!-- Zone 2 : Search bar -->
+
+            <div class="w-full bg-white px-[16px]">
+              <!-- Input container -->
+              <div class="flex items-center border border-[#C6C6C6] pl-[12px] pr-[10px] h-[36px]">
+                <!-- Input -->
+                <input type="text" class="flex-1 min-w-0 bg-transparent focus:outline-none text-[#7A7A7A]" />
+
+                <!-- Clear button (X) -->
+                <button type="button" aria-label="Effacer la recherche" class="pr-[5px]">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="h-3 w-3 text-[#7A7A7A]"
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                  </svg>
+                </button>
+
+                <!-- Magnifying Glass Icon -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  class="w-4 h-4 text-[#7A7A7A]"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M21 21l-4.35-4.35M10 18a8 8 0 100-16 8 8 0 000 16z"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            <!-- Zone 3 : List of Selected Items -->
+
+            <div class="flex bg-white pt-[15px]">
+              <ul class="flex flex-col w-full">
+                <!-- Selected item 01 -->
+                <li
+                  class="group flex items-center justify-between w-full bg-[#FFD15B] text-[#1B1B1B] my-[1px] px-[16px] py-[6px]"
+                >
+                  <span class="transition group-hover:font-bold">Tomato</span>
+                  <button
+                    type="button"
+                    aria-label="Retirer l'ingrédient"
+                    class="text-[#1B1B1B] opacity-0 group-hover:opacity-100 transition"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                      <path
+                        fill-rule="evenodd"
+                        d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </button>
+                </li>
+
+                <!-- Selected item 02 -->
+                <li
+                  class="group flex items-center justify-between w-full bg-[#FFD15B] text-[#1B1B1B] my-[1px] px-[16px] py-[6px]"
+                >
+                  <span class="transition group-hover:font-bold">Garlic</span>
+                  <button
+                    type="button"
+                    aria-label="Retirer l'ingrédient"
+                    class="text-[#1B1B1B] opacity-0 group-hover:opacity-100 transition"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                      <path
+                        fill-rule="evenodd"
+                        d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </button>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Zone 4 : List of available items -->
+            <div class="dropdown-options flex bg-white pt-[15px] rounded-b-[11px] overflow-hidden">
+              <ul class="options-list flex flex-col w-full">
+                <!-- available item 01 -->
+                <li
+                  class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] my-[1px] px-[16px] py-[6px]"
+                >
+                  <span class="transition group-hover:font-bold">Tomato</span>
+                </li>
+                <!-- available item 02 -->
+                <li
+                  class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] my-[1px] px-[16px] py-[6px]"
+                >
+                  <span class="transition group-hover:font-bold">Salade</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!--  Dropdown Filter 2  -->
+          <div class="relative">
+            <button
+              class="flex justify-between items-center h-full w-full px-[16px] gap-[58px] font-[500] bg-white rounded-[11px] shadow"
+            >
+              <span>Appareils</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+          </div>
+          <!--  Dropdown Filter 3  -->
+          <div class="relative">
+            <button
+              class="flex justify-between items-center h-full w-full px-[16px] gap-[58px] font-[500] bg-white rounded-[11px] shadow"
+            >
+              <span>Ustensiles</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <!-- -------------------- Recipe Count -------------------- -->
+        <div class="ml-auto flex items-center">
+          <span class="font-[Anton] text-[21px] text-[#1B1B1B] pt-[10px]">1500 recettes</span>
+        </div>
+      </div>
+      <!-- ==================== Selected Filters ==================== -->
+      <div class="flex flex-wrap gap-[10px] pt-[20px]">
+        <!-- Filter 01 -->
+        <div
+          class="flex items-center justify-between bg-[#FFD15B] text-black text-[14px] px-[16px] rounded-[10px] min-w-[203px] h-[53px] z-2"
+        >
+          <span class="mr-[8px]">Creme de coco</span>
+          <button type="button" aria-label="Retirer le filtre" class="group">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              class="h-4 w-4 stroke-[1.5] group-hover:stroke-[2.5] text-[#7A7A7A] group-hover:text-black transition-all"
+              stroke="currentColor"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Filter 02 -->
+        <div
+          class="flex items-center justify-between bg-[#FFD15B] text-black text-[14px] px-[16px] rounded-[10px] min-w-[203px] h-[53px] z-2"
+        >
+          <span class="mr-[8px]">Basilic</span>
+          <button type="button" aria-label="Retirer le filtre" class="group">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              class="h-4 w-4 stroke-[1.5] group-hover:stroke-[2.5] text-[#7A7A7A] group-hover:text-black transition-all"
+              stroke="currentColor"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- #################### Main - Recipe Cards #################### -->
+
+    <main class="recipes-section bg-[#EDEDED] pt-[55px] px-[104px]">
+      <div class="TEMPO h-[500px]"></div>
+    </main>
   </body>
 </html>
