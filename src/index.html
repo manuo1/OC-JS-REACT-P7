@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Les Petits Plats</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@200..800&display=swap"
+      rel="stylesheet"
+    />
+    <link href="css/tailwind.css" rel="stylesheet" />
+  </head>
+  <body class="max-w-[1440px] mx-auto font-[Manrope]">
+    <!-- #################### Header #################### -->
+    <header class="hero-section">
+      <div class="h-[667px] bg-[url(/src/assets/images/header_background.png)] bg-cover">
+        <!-- ==================== Logo ==================== -->
+        <div class="relative pl-[69px] pt-[51px]">
+          <img src="/src/assets/images/Logo.png" alt="Les Petits Plats" class="object-cover h-[25px] w-[207px]" />
+        </div>
+
+        <!-- ==================== Title ==================== -->
+        <h1 class="font-[Anton] font-normal text-[44px] text-[#FFD15B] mt-[169px] mx-auto max-w-[700px] text-center">
+          CHERCHEZ PARMI PLUS DE 1500 RECETTES DU QUOTIDIEN,SIMPLES ET DÉLICIEUSES
+        </h1>
+
+        <!-- ==================== Search Bar ==================== -->
+        <div class="relative mx-auto w-full max-w-[954px] h-[72px] mt-[29px]">
+          <input
+            type="text"
+            placeholder="Rechercher une recette, un ingrédient..."
+            class="rounded-[11px] bg-white w-full h-full text-[16px] pl-[35px]"
+          />
+          <button
+            class="absolute right-[10px] top-1/2 transform -translate-y-1/2 bg-[#1B1B1B] rounded-[10px] h-[52px] w-[51px] flex items-center justify-center"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-[35px] h-[35px] text-white"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="size-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+  </body>
+</html>
