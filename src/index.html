@@ -30,11 +30,29 @@
 
         <!-- ==================== Search Bar ==================== -->
         <div class="relative mx-auto w-full max-w-[954px] h-[72px] mt-[29px]">
+          <!-- Input -->
           <input
             type="text"
             placeholder="Rechercher une recette, un ingrédient..."
-            class="rounded-[11px] bg-white w-full h-full text-[16px] pl-[35px]"
+            class="relative rounded-[11px] bg-white w-full h-full text-[16px] pl-[35px]"
           />
+          <!-- Clear button (X) -->
+          <button
+            type="button"
+            aria-label="Effacer la recherche"
+            class="absolute right-[80px] top-1/2 transform -translate-y-1/2 group"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              class="h-6 w-6 stroke-[1.5] group-hover:stroke-[2.5] text-[#7A7A7A] group-hover:text-black transition-all"
+              stroke="currentColor"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+          </button>
+          <!-- Magnifying Glass Icon -->
           <button
             class="absolute right-[10px] top-1/2 transform -translate-y-1/2 bg-[#1B1B1B] rounded-[10px] h-[52px] w-[51px] flex items-center justify-center"
           >
@@ -62,7 +80,7 @@
       <div class="flex justify-between h-[56px]">
         <!-- -------------------- Dropdowns group -------------------- -->
 
-        <div class="flex justify-start gap-[65px] z-1">
+        <div id="" class="flex justify-start gap-[65px] z-1">
           <!--  Dropdown Filter 1  -->
 
           <div class="min-w-[100px] max-w-[195px]">
@@ -95,14 +113,13 @@
                 <input type="text" class="flex-1 min-w-0 bg-transparent focus:outline-none text-[#7A7A7A]" />
 
                 <!-- Clear button (X) -->
-                <button type="button" aria-label="Effacer la recherche" class="pr-[5px]">
+                <button type="button" aria-label="Effacer la recherche" class="pr-[5px] group">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
-                    stroke-width="1.5"
+                    class="h-3.5 w-3.5 stroke-[1.5] group-hover:stroke-[2.5] text-[#7A7A7A] group-hover:text-black transition-all"
                     stroke="currentColor"
-                    class="h-3 w-3 text-[#7A7A7A]"
                   >
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                   </svg>
@@ -203,12 +220,13 @@
           class="flex items-center justify-between bg-[#FFD15B] text-black text-[14px] px-[16px] rounded-[10px] min-w-[203px] h-[53px] z-2"
         >
           <span class="mr-[8px]">Creme de coco</span>
+          <!-- Clear button (X) -->
           <button type="button" aria-label="Retirer le filtre" class="group">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              class="h-4 w-4 stroke-[1.5] group-hover:stroke-[2.5] text-[#7A7A7A] group-hover:text-black transition-all"
+              class="h-5 w-5 stroke-[1.5] group-hover:stroke-[2.5] text-[#7A7A7A] group-hover:text-black transition-all"
               stroke="currentColor"
             >
               <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
@@ -221,12 +239,13 @@
           class="flex items-center justify-between bg-[#FFD15B] text-black text-[14px] px-[16px] rounded-[10px] min-w-[203px] h-[53px] z-2"
         >
           <span class="mr-[8px]">Basilic</span>
+          <!-- Clear button (X) -->
           <button type="button" aria-label="Retirer le filtre" class="group">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              class="h-4 w-4 stroke-[1.5] group-hover:stroke-[2.5] text-[#7A7A7A] group-hover:text-black transition-all"
+              class="h-5 w-5 stroke-[1.5] group-hover:stroke-[2.5] text-[#7A7A7A] group-hover:text-black transition-all"
               stroke="currentColor"
             >
               <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
