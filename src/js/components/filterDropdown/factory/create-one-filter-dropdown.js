@@ -41,12 +41,12 @@ function createFilterDropdown(filterType) {
   
         <!-- Zone 2 : List of Selected Items -->
         <div class="flex bg-white pt-[15px]">
-          <ul id="${key}-${section.selected}" class="flex flex-col w-full"></ul>
+          <ul id="${key}-${section.selected}" class="flex flex-col w-full max-h-[200px] overflow-y-auto"></ul>
         </div>
   
         <!-- Zone 3 : List of available items -->
         <div class="dropdown-options flex bg-white pt-[15px] rounded-b-[11px] overflow-hidden">
-          <ul id="${key}-${section.available}" class="options-list flex flex-col w-full"></ul>
+          <ul id="${key}-${section.available}" class="options-list flex flex-col w-full max-h-[300px] overflow-y-auto"></ul>
         </div>
       </div>
     `;
