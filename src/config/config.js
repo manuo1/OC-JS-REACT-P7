@@ -13,4 +13,9 @@ const FILTER_TYPES = [
   },
 ];
 
-export { FILTER_TYPES };
+const DROPDOWN_FILTER_SECTION = {
+  selected: "selected-items-section",
+  available: "available-items-section",
+};
+
+export { DROPDOWN_FILTER_SECTION, FILTER_TYPES };
