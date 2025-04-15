@@ -4,7 +4,7 @@
   "description": "Développeur d'application JavaScript React - Projet 7 - Développez un algorithme de recherche en JavaScript",
   "main": "index.js",
   "scripts": {
-    "build:css": "tailwindcss -i ./src/css/style.css -o ./src/css/tailwind.css --watch"
+    "build:css": "rm -f ./src/css/tailwind.css && tailwindcss -i ./src/css/style.css -o ./src/css/tailwind.css --watch"
   },
   "repository": {
     "type": "git",
