@@ -1,15 +1,7 @@
-/**
- * Creates a dropdown menu element based on the provided filter type.
- * The dropdown includes a toggle button, a search bar, a section for selected items,
- * and a section for available items.
- *
- * @param {Object} filterTypes - An object representing the filter type, containing:
- *   @param {string} filterTypes.key - A unique key used to identify the dropdown and its elements.
- *   @param {string} filterTypes.label - The label displayed on the dropdown button.
- * @returns {HTMLElement} - A DOM element representing the complete dropdown menu.
- */
-function createFilterDropdown(filterTypes) {
-  const { key = null, label = null } = filterTypes;
+import { DROPDOWN_FILTER_SECTION as section } from "../../../../config/config.js";
+
+function createFilterDropdown(filterType) {
+  const { key = null, label = null } = filterType;
   const container = document.createElement("div");
   container.className = "min-w-[200px] max-w-[195px]";
   container.id = key + "-filter";
@@ -49,12 +41,12 @@ function createFilterDropdown(filterTypes) {
   
         <!-- Zone 2 : List of Selected Items -->
         <div class="flex bg-white pt-[15px]">
-          <ul id="selected-items-section" class="flex flex-col w-full"></ul>
+          <ul id="${key}-${section.selected}" class="flex flex-col w-full"></ul>
         </div>
   
         <!-- Zone 3 : List of available items -->
         <div class="dropdown-options flex bg-white pt-[15px] rounded-b-[11px] overflow-hidden">
-          <ul id="available-items-section" class="options-list flex flex-col w-full"></ul>
+          <ul id="${key}-${section.available}" class="options-list flex flex-col w-full"></ul>
         </div>
       </div>
     `;
