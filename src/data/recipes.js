@@ -1,4 +1,4 @@
-const recipes = [
+const RECIPES = [
   {
     id: 1,
     image: "Recette01.jpg",
@@ -1826,4 +1826,4 @@ const recipes = [
   },
 ];
 
-export { recipes };
+export { RECIPES };
