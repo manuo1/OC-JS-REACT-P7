@@ -1,4 +1,5 @@
 import { RECIPES } from "../../data/recipes.js";
+
 class SearchState {
   constructor() {
     this.searchText = "";
@@ -25,7 +26,7 @@ class SearchState {
 
     this.filteredRecipes.forEach((recipe) => {
       recipe.ingredients.forEach((item) => {
-        ingredientsSet.add(item.ingredient);
+        ingredientsSet.add(item.ingredient.toLowerCase());
       });
     });
 
@@ -37,7 +38,7 @@ class SearchState {
 
     this.filteredRecipes.forEach((recipe) => {
       recipe.ustensils.forEach((ustensil) => {
-        ustensilsSet.add(ustensil);
+        ustensilsSet.add(ustensil.toLowerCase());
       });
     });
 
@@ -48,7 +49,7 @@ class SearchState {
     const appliancesSet = new Set();
 
     this.filteredRecipes.forEach((recipe) => {
-      appliancesSet.add(recipe.appliance);
+      appliancesSet.add(recipe.appliance.toLowerCase());
     });
 
     return Array.from(appliancesSet).sort();

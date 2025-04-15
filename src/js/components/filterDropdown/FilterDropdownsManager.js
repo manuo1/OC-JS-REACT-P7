@@ -1,8 +1,8 @@
 import { createFilterDropdown } from "./factory/create-one-filter-dropdown.js";
 import { createSelectedItem } from "./factory/create-selected-item.js";
 import { createAvailableItem } from "./factory/create-available-item.js";
-import { DROPDOWN_FILTER_SECTION as section, FILTER_TYPES } from "../../../config/config.js";
-
+import { INGREDIENTS, APPLIANCE, USTENSILS, DROPDOWN_FILTER_SECTION, FILTER_TYPES } from "../../../config/config.js";
+import { capitalize } from "../../utils/utils.js";
 class FilterDropdownsManager {
   constructor() {
     this.dropdowns = this.createFilterDropdowns();
@@ -34,20 +34,37 @@ class FilterDropdownsManager {
     });
   }
 
-  addItemInList(value, filterType, list) {
-    const id = `${filterType.key}-${list}`;
+  updateItems(searchState) {
+    this.clearAvailableLists();
+
+    this.addItems(searchState.getFilteredRecipesAppliances(), APPLIANCE, DROPDOWN_FILTER_SECTION.available);
+    this.addItems(searchState.getFilteredRecipesIngredients(), INGREDIENTS, DROPDOWN_FILTER_SECTION.available);
+    this.addItems(searchState.getFilteredRecipesUstensils(), USTENSILS, DROPDOWN_FILTER_SECTION.available);
+    this.addItems(searchState.selectedIngredients, APPLIANCE, DROPDOWN_FILTER_SECTION.selected);
+    this.addItems(searchState.selectedUstensils, INGREDIENTS, DROPDOWN_FILTER_SECTION.selected);
+    this.addItems(searchState.selectedAppliances, USTENSILS, DROPDOWN_FILTER_SECTION.selected);
+  }
+
+  addItems(labelList, filterType, sectionList) {
+    labelList.forEach((value) => {
+      this.addItem(capitalize(value), filterType, sectionList);
+    });
+  }
+
+  addItem(label, filterType, sectionList) {
+    const id = `${filterType.key}-${sectionList}`;
     const container = document.getElementById(id);
     if (!container) {
       console.error(`${id} Does not exits`);
       return;
     }
-    switch (list) {
-      case section.selected:
-        container.appendChild(createSelectedItem(value));
+    switch (sectionList) {
+      case DROPDOWN_FILTER_SECTION.selected:
+        container.appendChild(createSelectedItem(label));
         break;
 
-      case section.available:
-        container.appendChild(createAvailableItem(value));
+      case DROPDOWN_FILTER_SECTION.available:
+        container.appendChild(createAvailableItem(label));
         break;
 
       default:
@@ -56,8 +73,8 @@ class FilterDropdownsManager {
     }
   }
 
-  clearList(filterType, list) {
-    const id = `${filterType.key}-${list}`;
+  clearList(filterType, sectionList) {
+    const id = `${filterType.key}-${sectionList}`;
     const container = document.getElementById(id);
 
     if (!container) {
@@ -66,6 +83,12 @@ class FilterDropdownsManager {
     }
 
     container.innerHTML = "";
+  }
+
+  clearAvailableLists() {
+    FILTER_TYPES.forEach((filterType) => {
+      this.clearList(filterType, DROPDOWN_FILTER_SECTION.available);
+    });
   }
 }
 
