@@ -21,7 +21,7 @@ class EventManager {
     });
   }
 
-  filterDropdown_onClickAddAvailableToSelected() {
+  filterDropdowns_onClickAddAvailableToSelected() {
     const availableSection = DROPDOWN_FILTER_SECTION.available;
 
     // Ingredients Filter
@@ -52,7 +52,7 @@ class EventManager {
     });
   }
 
-  filterDropdown_onClickRemoveItemToSelected() {
+  filterDropdowns_onClickRemoveItemToSelected() {
     const selectedSection = DROPDOWN_FILTER_SECTION.selected;
 
     // Ingredients Filter
@@ -85,5 +85,29 @@ class EventManager {
       this.filterDropdowns.updateInnerElements(this.searchState, this);
     });
   }
+
+  filterDropdowns_filterAvailableAccordingToInput() {
+    // Ingredients Filter
+    const ingredientsSearchInptut = document.getElementById(`${INGREDIENTS.key}-search`);
+    ingredientsSearchInptut.addEventListener("input", (event) => {
+      const value = event.target.value.toLowerCase();
+      console.log(value);
+    });
+
+    // Appliances Filter
+    const appliancesSearchInptut = document.getElementById(`${APPLIANCE.key}-search`);
+    appliancesSearchInptut.addEventListener("input", (event) => {
+      const value = event.target.value.toLowerCase();
+      console.log(value);
+    });
+
+    // Ustensils Filter
+    const ustensilsSearchInptut = document.getElementById(`${USTENSILS.key}-search`);
+    ustensilsSearchInptut.addEventListener("input", (event) => {
+      const value = event.target.value.toLowerCase();
+      console.log(value);
+    });
+  }
 }
+
 export { EventManager };

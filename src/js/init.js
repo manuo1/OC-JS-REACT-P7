@@ -9,8 +9,9 @@ function initPage() {
   filterDropdowns.addToDOM();
   filterDropdowns.updateInnerElements(searchState);
   eventManager.filterDropdowns_initToggles();
-  eventManager.filterDropdown_onClickAddAvailableToSelected();
-  eventManager.filterDropdown_onClickRemoveItemToSelected();
+  eventManager.filterDropdowns_onClickAddAvailableToSelected();
+  eventManager.filterDropdowns_onClickRemoveItemToSelected();
+  eventManager.filterDropdowns_filterAvailableAccordingToInput();
 }
 
 window.addEventListener("DOMContentLoaded", initPage);
