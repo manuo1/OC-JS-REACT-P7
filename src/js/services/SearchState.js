@@ -22,37 +22,48 @@ class SearchState {
   }
 
   getFilteredRecipesIngredients() {
-    const ingredientsSet = new Set();
+    const ingredientsList = [];
 
     this.filteredRecipes.forEach((recipe) => {
       recipe.ingredients.forEach((item) => {
-        ingredientsSet.add(item.ingredient.toLowerCase());
+        const ingredient = item.ingredient.toLowerCase();
+        if (!this.selectedIngredients.has(ingredient)) {
+          ingredientsList.push(ingredient);
+        }
       });
     });
 
-    return Array.from(ingredientsSet).sort();
+    return new Set(ingredientsList.sort());
   }
 
   getFilteredRecipesUstensils() {
-    const ustensilsSet = new Set();
+    const ustensilsList = [];
 
     this.filteredRecipes.forEach((recipe) => {
-      recipe.ustensils.forEach((ustensil) => {
-        ustensilsSet.add(ustensil.toLowerCase());
+      recipe.ustensils.forEach((item) => {
+        const ustensil = item.toLowerCase();
+
+        if (!this.selectedUstensils.has(ustensil)) {
+          ustensilsList.push(ustensil);
+        }
       });
     });
 
-    return Array.from(ustensilsSet).sort();
+    return new Set(ustensilsList.sort());
   }
 
   getFilteredRecipesAppliances() {
-    const appliancesSet = new Set();
+    const appliancesList = [];
 
     this.filteredRecipes.forEach((recipe) => {
-      appliancesSet.add(recipe.appliance.toLowerCase());
+      const appliance = recipe.appliance.toLowerCase();
+
+      if (!this.selectedAppliances.has(appliance)) {
+        appliancesList.push(appliance);
+      }
     });
 
-    return Array.from(appliancesSet).sort();
+    return new Set(appliancesList.sort());
   }
 }
 
