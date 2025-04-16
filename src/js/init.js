@@ -10,6 +10,7 @@ function initPage() {
   filterDropdowns.updateInnerElements(searchState);
   eventManager.filterDropdowns_initToggles();
   eventManager.filterDropdown_onClickAddAvailableToSelected();
+  eventManager.filterDropdown_onClickRemoveItemToSelected();
 }
 
 window.addEventListener("DOMContentLoaded", initPage);
