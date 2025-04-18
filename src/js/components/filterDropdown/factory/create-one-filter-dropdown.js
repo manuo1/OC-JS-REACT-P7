@@ -28,7 +28,7 @@ function createFilterDropdown(filterType) {
         <div class="w-full bg-white px-[16px]">
           <div class="flex items-center border border-[#C6C6C6] pl-[12px] pr-[10px] h-[36px]">
             <input id="${key}-search" type="text" class="flex-1 min-w-0 bg-transparent focus:outline-none text-[#7A7A7A]" />
-            <button type="button" aria-label="Effacer la recherche" class="pr-[5px] group">
+            <button id="${key}-search-clear" type="button" aria-label="Effacer la recherche" class="pr-[5px] group">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="h-3.5 w-3.5 stroke-[1.5] group-hover:stroke-[2.5] text-[#7A7A7A] group-hover:text-black transition-all" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
               </svg>

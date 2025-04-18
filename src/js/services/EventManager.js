@@ -30,6 +30,8 @@ class EventManager {
       const li = event.target.closest("li");
       if (!li || !li.dataset.value) return;
       this.searchManager.selectedIngredients.add(li.dataset.value.toLowerCase());
+      this.filterDropdowns.clearInput(INGREDIENTS);
+      this.searchManager.ingredientSearchInputValue = "";
       this.filterDropdowns.updateInnerElements(this.searchManager, this);
     });
 
@@ -39,6 +41,8 @@ class EventManager {
       const li = event.target.closest("li");
       if (!li || !li.dataset.value) return;
       this.searchManager.selectedAppliances.add(li.dataset.value.toLowerCase());
+      this.filterDropdowns.clearInput(APPLIANCE);
+      this.searchManager.applianceSearchInputValue = "";
       this.filterDropdowns.updateInnerElements(this.searchManager, this);
     });
 
@@ -48,11 +52,13 @@ class EventManager {
       const li = event.target.closest("li");
       if (!li || !li.dataset.value) return;
       this.searchManager.selectedUstensils.add(li.dataset.value.toLowerCase());
+      this.filterDropdowns.clearInput(USTENSILS);
+      this.searchManager.ustensilSearchInputValue = "";
       this.filterDropdowns.updateInnerElements(this.searchManager, this);
     });
   }
 
-  filterDropdowns_onClickRemoveItemToSelected() {
+  filterDropdowns_onClickRemoveItemFromSelected() {
     const selectedSection = DROPDOWN_FILTER_SECTION.selected;
 
     // Ingredients Filter
@@ -105,6 +111,32 @@ class EventManager {
     const ustensilsSearchInptut = document.getElementById(`${USTENSILS.key}-search`);
     ustensilsSearchInptut.addEventListener("input", (event) => {
       this.searchManager.ustensilSearchInputValue = event.target.value.toLowerCase();
+      this.filterDropdowns.updateInnerElements(this.searchManager, this);
+    });
+  }
+
+  filterDropdowns_onClickClearInput() {
+    // Ingredients Filter
+    const ingredientsSearchInptutClear = document.getElementById(`${INGREDIENTS.key}-search-clear`);
+    ingredientsSearchInptutClear.addEventListener("click", () => {
+      this.filterDropdowns.clearInput(INGREDIENTS);
+      this.searchManager.ingredientSearchInputValue = "";
+      this.filterDropdowns.updateInnerElements(this.searchManager, this);
+    });
+
+    // Appliances Filter
+    const appliancesSearchInptutClear = document.getElementById(`${APPLIANCE.key}-search-clear`);
+    appliancesSearchInptutClear.addEventListener("click", () => {
+      this.filterDropdowns.clearInput(APPLIANCE);
+      this.searchManager.applianceSearchInputValue = "";
+      this.filterDropdowns.updateInnerElements(this.searchManager, this);
+    });
+
+    // Ustensils Filter
+    const ustensilsSearchInptutClear = document.getElementById(`${USTENSILS.key}-search-clear`);
+    ustensilsSearchInptutClear.addEventListener("click", () => {
+      this.filterDropdowns.clearInput(USTENSILS);
+      this.searchManager.ustensilSearchInputValue = "";
       this.filterDropdowns.updateInnerElements(this.searchManager, this);
     });
   }

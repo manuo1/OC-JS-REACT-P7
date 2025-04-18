@@ -55,6 +55,10 @@ class FilterDropdownsManager {
     });
   }
 
+  clearInput(filterType) {
+    document.getElementById(`${filterType.key}-search`).value = "";
+  }
+
   clearLists() {
     FILTER_TYPES.forEach((filterType) => {
       Object.values(DROPDOWN_FILTER_SECTION).forEach((sectionList) => {
