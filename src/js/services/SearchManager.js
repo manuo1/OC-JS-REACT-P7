@@ -1,5 +1,5 @@
 import { RECIPES } from "../../data/recipes.js";
-
+import { normalize } from "../utils/utils.js";
 class SearchManager {
   constructor() {
     this.searchText = "";
@@ -29,7 +29,7 @@ class SearchManager {
     });
     // Level 2 on Filter input
     const filteredIngredientsList = ingredientsList.filter((item) =>
-      item.toLowerCase().includes(this.ingredientSearchInputValue.toLowerCase())
+      normalize(item).toLowerCase().includes(normalize(this.ingredientSearchInputValue.toLowerCase()))
     );
 
     return new Set(filteredIngredientsList.sort());
@@ -49,7 +49,7 @@ class SearchManager {
     });
     // Level 2 on Filter input
     const filteredUstensilList = ustensilsList.filter((item) =>
-      item.toLowerCase().includes(this.ustensilSearchInputValue.toLowerCase())
+      normalize(item).toLowerCase().includes(normalize(this.ustensilSearchInputValue.toLowerCase()))
     );
     return new Set(filteredUstensilList.sort());
   }
@@ -66,7 +66,7 @@ class SearchManager {
     });
     // Level 2 on Filter input
     const filteredAppliancesList = appliancesList.filter((item) =>
-      item.toLowerCase().includes(this.applianceSearchInputValue.toLowerCase())
+      normalize(item).toLowerCase().includes(normalize(this.applianceSearchInputValue.toLowerCase()))
     );
     return new Set(filteredAppliancesList.sort());
   }
