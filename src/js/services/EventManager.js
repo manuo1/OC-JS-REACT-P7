@@ -2,7 +2,7 @@ import { INGREDIENTS, APPLIANCE, USTENSILS, DROPDOWN_FILTER_SECTION, FILTER_TYPE
 
 class EventManager {
   constructor(searchState, filterDropdowns) {
-    this.searchState = searchState;
+    this.searchManager = searchState;
     this.filterDropdowns = filterDropdowns;
   }
 
@@ -29,8 +29,8 @@ class EventManager {
     availableIngredientsUl.addEventListener("click", (event) => {
       const li = event.target.closest("li");
       if (!li || !li.dataset.value) return;
-      this.searchState.selectedIngredients.add(li.dataset.value.toLowerCase());
-      this.filterDropdowns.updateInnerElements(this.searchState, this);
+      this.searchManager.selectedIngredients.add(li.dataset.value.toLowerCase());
+      this.filterDropdowns.updateInnerElements(this.searchManager, this);
     });
 
     // Appliances Filter
@@ -38,8 +38,8 @@ class EventManager {
     availableAppliancesUl.addEventListener("click", (event) => {
       const li = event.target.closest("li");
       if (!li || !li.dataset.value) return;
-      this.searchState.selectedAppliances.add(li.dataset.value.toLowerCase());
-      this.filterDropdowns.updateInnerElements(this.searchState, this);
+      this.searchManager.selectedAppliances.add(li.dataset.value.toLowerCase());
+      this.filterDropdowns.updateInnerElements(this.searchManager, this);
     });
 
     // Ustensils Filter
@@ -47,8 +47,8 @@ class EventManager {
     availableUstensilsUl.addEventListener("click", (event) => {
       const li = event.target.closest("li");
       if (!li || !li.dataset.value) return;
-      this.searchState.selectedUstensils.add(li.dataset.value.toLowerCase());
-      this.filterDropdowns.updateInnerElements(this.searchState, this);
+      this.searchManager.selectedUstensils.add(li.dataset.value.toLowerCase());
+      this.filterDropdowns.updateInnerElements(this.searchManager, this);
     });
   }
 
@@ -61,8 +61,8 @@ class EventManager {
       const button = event.target.closest("button");
       const li = button.closest("li");
       if (!li || !li.dataset.value) return;
-      this.searchState.selectedIngredients.delete(li.dataset.value.toLowerCase());
-      this.filterDropdowns.updateInnerElements(this.searchState, this);
+      this.searchManager.selectedIngredients.delete(li.dataset.value.toLowerCase());
+      this.filterDropdowns.updateInnerElements(this.searchManager, this);
     });
 
     // Appliances Filter
@@ -71,8 +71,8 @@ class EventManager {
       const button = event.target.closest("button");
       const li = button.closest("li");
       if (!li || !li.dataset.value) return;
-      this.searchState.selectedAppliances.delete(li.dataset.value.toLowerCase());
-      this.filterDropdowns.updateInnerElements(this.searchState, this);
+      this.searchManager.selectedAppliances.delete(li.dataset.value.toLowerCase());
+      this.filterDropdowns.updateInnerElements(this.searchManager, this);
     });
 
     // Ustensils Filter
@@ -81,8 +81,8 @@ class EventManager {
       const button = event.target.closest("button");
       const li = button.closest("li");
       if (!li || !li.dataset.value) return;
-      this.searchState.selectedUstensils.delete(li.dataset.value.toLowerCase());
-      this.filterDropdowns.updateInnerElements(this.searchState, this);
+      this.searchManager.selectedUstensils.delete(li.dataset.value.toLowerCase());
+      this.filterDropdowns.updateInnerElements(this.searchManager, this);
     });
   }
 
@@ -90,22 +90,22 @@ class EventManager {
     // Ingredients Filter
     const ingredientsSearchInptut = document.getElementById(`${INGREDIENTS.key}-search`);
     ingredientsSearchInptut.addEventListener("input", (event) => {
-      const value = event.target.value.toLowerCase();
-      console.log(value);
+      this.searchManager.ingredientSearchInputValue = event.target.value.toLowerCase();
+      this.filterDropdowns.updateInnerElements(this.searchManager, this);
     });
 
     // Appliances Filter
     const appliancesSearchInptut = document.getElementById(`${APPLIANCE.key}-search`);
     appliancesSearchInptut.addEventListener("input", (event) => {
-      const value = event.target.value.toLowerCase();
-      console.log(value);
+      this.searchManager.applianceSearchInputValue = event.target.value.toLowerCase();
+      this.filterDropdowns.updateInnerElements(this.searchManager, this);
     });
 
     // Ustensils Filter
     const ustensilsSearchInptut = document.getElementById(`${USTENSILS.key}-search`);
     ustensilsSearchInptut.addEventListener("input", (event) => {
-      const value = event.target.value.toLowerCase();
-      console.log(value);
+      this.searchManager.ustensilSearchInputValue = event.target.value.toLowerCase();
+      this.filterDropdowns.updateInnerElements(this.searchManager, this);
     });
   }
 }
