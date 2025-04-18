@@ -1,20 +1,15 @@
 import { RECIPES } from "../../data/recipes.js";
-
-class SearchState {
+import { normalize } from "../utils/utils.js";
+class SearchManager {
   constructor() {
     this.searchText = "";
     this.selectedIngredients = new Set();
     this.selectedUstensils = new Set();
     this.selectedAppliances = new Set();
     this.filteredRecipes = [...RECIPES];
-  }
-
-  reset() {
-    this.searchText = "";
-    this.selectedIngredients.clear();
-    this.selectedUstensils.clear();
-    this.selectedAppliances.clear();
-    this.filteredRecipes = [...RECIPES];
+    this.ingredientSearchInputValue = "";
+    this.ustensilSearchInputValue = "";
+    this.applianceSearchInputValue = "";
   }
 
   updateFilteredRecipes() {
@@ -23,7 +18,7 @@ class SearchState {
 
   getFilteredRecipesIngredients() {
     const ingredientsList = [];
-
+    // Level 1 on filtered recipes
     this.filteredRecipes.forEach((recipe) => {
       recipe.ingredients.forEach((item) => {
         const ingredient = item.ingredient.toLowerCase();
@@ -32,13 +27,17 @@ class SearchState {
         }
       });
     });
+    // Level 2 on Filter input
+    const filteredIngredientsList = ingredientsList.filter((item) =>
+      normalize(item).toLowerCase().includes(normalize(this.ingredientSearchInputValue.toLowerCase()))
+    );
 
-    return new Set(ingredientsList.sort());
+    return new Set(filteredIngredientsList.sort());
   }
 
   getFilteredRecipesUstensils() {
+    // Level 1 on filtered recipes
     const ustensilsList = [];
-
     this.filteredRecipes.forEach((recipe) => {
       recipe.ustensils.forEach((item) => {
         const ustensil = item.toLowerCase();
@@ -48,13 +47,16 @@ class SearchState {
         }
       });
     });
-
-    return new Set(ustensilsList.sort());
+    // Level 2 on Filter input
+    const filteredUstensilList = ustensilsList.filter((item) =>
+      normalize(item).toLowerCase().includes(normalize(this.ustensilSearchInputValue.toLowerCase()))
+    );
+    return new Set(filteredUstensilList.sort());
   }
 
   getFilteredRecipesAppliances() {
+    // Level 1 on filtered recipes
     const appliancesList = [];
-
     this.filteredRecipes.forEach((recipe) => {
       const appliance = recipe.appliance.toLowerCase();
 
@@ -62,9 +64,12 @@ class SearchState {
         appliancesList.push(appliance);
       }
     });
-
-    return new Set(appliancesList.sort());
+    // Level 2 on Filter input
+    const filteredAppliancesList = appliancesList.filter((item) =>
+      normalize(item).toLowerCase().includes(normalize(this.applianceSearchInputValue.toLowerCase()))
+    );
+    return new Set(filteredAppliancesList.sort());
   }
 }
 
-export { SearchState };
+export { SearchManager };

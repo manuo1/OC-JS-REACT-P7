@@ -1,16 +1,18 @@
 import { FilterDropdownsManager } from "./components/filterDropdown/FilterDropdownsManager.js";
-import { SearchState } from "./services/SearchState.js";
+import { SearchManager } from "./services/SearchManager.js";
 import { EventManager } from "./services/EventManager.js";
 
 function initPage() {
   const filterDropdowns = new FilterDropdownsManager();
-  const searchState = new SearchState();
-  const eventManager = new EventManager(searchState, filterDropdowns);
+  const searchManager = new SearchManager();
+  const eventManager = new EventManager(searchManager, filterDropdowns);
   filterDropdowns.addToDOM();
-  filterDropdowns.updateInnerElements(searchState);
+  filterDropdowns.updateInnerElements(searchManager);
   eventManager.filterDropdowns_initToggles();
-  eventManager.filterDropdown_onClickAddAvailableToSelected();
-  eventManager.filterDropdown_onClickRemoveItemToSelected();
+  eventManager.filterDropdowns_onClickAddAvailableToSelected();
+  eventManager.filterDropdowns_onClickRemoveItemFromSelected();
+  eventManager.filterDropdowns_filterAvailableAccordingToInput();
+  eventManager.filterDropdowns_onClickClearInput();
 }
 
 window.addEventListener("DOMContentLoaded", initPage);

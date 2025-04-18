@@ -2,7 +2,7 @@ import { INGREDIENTS, APPLIANCE, USTENSILS, DROPDOWN_FILTER_SECTION, FILTER_TYPE
 
 class EventManager {
   constructor(searchState, filterDropdowns) {
-    this.searchState = searchState;
+    this.searchManager = searchState;
     this.filterDropdowns = filterDropdowns;
   }
 
@@ -21,7 +21,7 @@ class EventManager {
     });
   }
 
-  filterDropdown_onClickAddAvailableToSelected() {
+  filterDropdowns_onClickAddAvailableToSelected() {
     const availableSection = DROPDOWN_FILTER_SECTION.available;
 
     // Ingredients Filter
@@ -29,8 +29,10 @@ class EventManager {
     availableIngredientsUl.addEventListener("click", (event) => {
       const li = event.target.closest("li");
       if (!li || !li.dataset.value) return;
-      this.searchState.selectedIngredients.add(li.dataset.value.toLowerCase());
-      this.filterDropdowns.updateInnerElements(this.searchState, this);
+      this.searchManager.selectedIngredients.add(li.dataset.value.toLowerCase());
+      this.filterDropdowns.clearInput(INGREDIENTS);
+      this.searchManager.ingredientSearchInputValue = "";
+      this.filterDropdowns.updateInnerElements(this.searchManager, this);
     });
 
     // Appliances Filter
@@ -38,8 +40,10 @@ class EventManager {
     availableAppliancesUl.addEventListener("click", (event) => {
       const li = event.target.closest("li");
       if (!li || !li.dataset.value) return;
-      this.searchState.selectedAppliances.add(li.dataset.value.toLowerCase());
-      this.filterDropdowns.updateInnerElements(this.searchState, this);
+      this.searchManager.selectedAppliances.add(li.dataset.value.toLowerCase());
+      this.filterDropdowns.clearInput(APPLIANCE);
+      this.searchManager.applianceSearchInputValue = "";
+      this.filterDropdowns.updateInnerElements(this.searchManager, this);
     });
 
     // Ustensils Filter
@@ -47,12 +51,14 @@ class EventManager {
     availableUstensilsUl.addEventListener("click", (event) => {
       const li = event.target.closest("li");
       if (!li || !li.dataset.value) return;
-      this.searchState.selectedUstensils.add(li.dataset.value.toLowerCase());
-      this.filterDropdowns.updateInnerElements(this.searchState, this);
+      this.searchManager.selectedUstensils.add(li.dataset.value.toLowerCase());
+      this.filterDropdowns.clearInput(USTENSILS);
+      this.searchManager.ustensilSearchInputValue = "";
+      this.filterDropdowns.updateInnerElements(this.searchManager, this);
     });
   }
 
-  filterDropdown_onClickRemoveItemToSelected() {
+  filterDropdowns_onClickRemoveItemFromSelected() {
     const selectedSection = DROPDOWN_FILTER_SECTION.selected;
 
     // Ingredients Filter
@@ -61,8 +67,8 @@ class EventManager {
       const button = event.target.closest("button");
       const li = button.closest("li");
       if (!li || !li.dataset.value) return;
-      this.searchState.selectedIngredients.delete(li.dataset.value.toLowerCase());
-      this.filterDropdowns.updateInnerElements(this.searchState, this);
+      this.searchManager.selectedIngredients.delete(li.dataset.value.toLowerCase());
+      this.filterDropdowns.updateInnerElements(this.searchManager, this);
     });
 
     // Appliances Filter
@@ -71,8 +77,8 @@ class EventManager {
       const button = event.target.closest("button");
       const li = button.closest("li");
       if (!li || !li.dataset.value) return;
-      this.searchState.selectedAppliances.delete(li.dataset.value.toLowerCase());
-      this.filterDropdowns.updateInnerElements(this.searchState, this);
+      this.searchManager.selectedAppliances.delete(li.dataset.value.toLowerCase());
+      this.filterDropdowns.updateInnerElements(this.searchManager, this);
     });
 
     // Ustensils Filter
@@ -81,9 +87,59 @@ class EventManager {
       const button = event.target.closest("button");
       const li = button.closest("li");
       if (!li || !li.dataset.value) return;
-      this.searchState.selectedUstensils.delete(li.dataset.value.toLowerCase());
-      this.filterDropdowns.updateInnerElements(this.searchState, this);
+      this.searchManager.selectedUstensils.delete(li.dataset.value.toLowerCase());
+      this.filterDropdowns.updateInnerElements(this.searchManager, this);
+    });
+  }
+
+  filterDropdowns_filterAvailableAccordingToInput() {
+    // Ingredients Filter
+    const ingredientsSearchInptut = document.getElementById(`${INGREDIENTS.key}-search`);
+    ingredientsSearchInptut.addEventListener("input", (event) => {
+      this.searchManager.ingredientSearchInputValue = event.target.value.toLowerCase();
+      this.filterDropdowns.updateInnerElements(this.searchManager, this);
+    });
+
+    // Appliances Filter
+    const appliancesSearchInptut = document.getElementById(`${APPLIANCE.key}-search`);
+    appliancesSearchInptut.addEventListener("input", (event) => {
+      this.searchManager.applianceSearchInputValue = event.target.value.toLowerCase();
+      this.filterDropdowns.updateInnerElements(this.searchManager, this);
+    });
+
+    // Ustensils Filter
+    const ustensilsSearchInptut = document.getElementById(`${USTENSILS.key}-search`);
+    ustensilsSearchInptut.addEventListener("input", (event) => {
+      this.searchManager.ustensilSearchInputValue = event.target.value.toLowerCase();
+      this.filterDropdowns.updateInnerElements(this.searchManager, this);
+    });
+  }
+
+  filterDropdowns_onClickClearInput() {
+    // Ingredients Filter
+    const ingredientsSearchInptutClear = document.getElementById(`${INGREDIENTS.key}-search-clear`);
+    ingredientsSearchInptutClear.addEventListener("click", () => {
+      this.filterDropdowns.clearInput(INGREDIENTS);
+      this.searchManager.ingredientSearchInputValue = "";
+      this.filterDropdowns.updateInnerElements(this.searchManager, this);
+    });
+
+    // Appliances Filter
+    const appliancesSearchInptutClear = document.getElementById(`${APPLIANCE.key}-search-clear`);
+    appliancesSearchInptutClear.addEventListener("click", () => {
+      this.filterDropdowns.clearInput(APPLIANCE);
+      this.searchManager.applianceSearchInputValue = "";
+      this.filterDropdowns.updateInnerElements(this.searchManager, this);
+    });
+
+    // Ustensils Filter
+    const ustensilsSearchInptutClear = document.getElementById(`${USTENSILS.key}-search-clear`);
+    ustensilsSearchInptutClear.addEventListener("click", () => {
+      this.filterDropdowns.clearInput(USTENSILS);
+      this.searchManager.ustensilSearchInputValue = "";
+      this.filterDropdowns.updateInnerElements(this.searchManager, this);
     });
   }
 }
+
 export { EventManager };
