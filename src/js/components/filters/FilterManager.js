@@ -1,10 +1,10 @@
-import { createFilterDropdown } from "./factory/create-one-filter-dropdown.js";
-import { createSelectedItem } from "./factory/create-selected-item.js";
-import { createAvailableItem } from "./factory/create-available-item.js";
-import { createFilterTag } from "./factory/create-filter-tags.js";
+import { createFilterDropdown } from "./filterDropdown/factory/create-one-filter-dropdown.js";
+import { createSelectedItem } from "./filterDropdown/factory/create-selected-item.js";
+import { createAvailableItem } from "./filterDropdown/factory/create-available-item.js";
+import { createFilterTag } from "./filterTags/factory/create-filter-tags.js";
 import { INGREDIENTS, APPLIANCE, USTENSILS, DROPDOWN_FILTER_SECTION, FILTER_TYPES } from "../../../config/config.js";
 import { capitalize } from "../../utils/utils.js";
-class FilterDropdownsManager {
+class FilterManager {
   constructor() {
     this.dropdowns = this.createFilterDropdowns();
   }
@@ -13,30 +13,30 @@ class FilterDropdownsManager {
     return FILTER_TYPES.map((filterTypes) => createFilterDropdown(filterTypes));
   }
 
-  addToDOM() {
-    const filterDropdownSection = document.getElementById("filter-dropdowns-section");
-    this.dropdowns.forEach((dropdown) => {
-      filterDropdownSection.appendChild(dropdown);
-    });
-  }
-
-  updateInnerElements(searchState) {
-    this.clearLists();
-    this.addAvailableItems(searchState.getFilteredRecipesAppliances(), APPLIANCE);
-    this.addAvailableItems(searchState.getFilteredRecipesIngredients(), INGREDIENTS);
-    this.addAvailableItems(searchState.getFilteredRecipesUstensils(), USTENSILS);
-    this.addSelectedItems(searchState.selectedAppliances, APPLIANCE);
-    this.addSelectedItems(searchState.selectedIngredients, INGREDIENTS);
-    this.addSelectedItems(searchState.selectedUstensils, USTENSILS);
-    this.clearTags();
-    this.addFilterTags([
+  filters_updateInnerElements(searchState) {
+    this.dropdowns_clearLists();
+    this.dropdowns_addAvailableItems(searchState.getFilteredRecipesAppliances(), APPLIANCE);
+    this.dropdowns_addAvailableItems(searchState.getFilteredRecipesIngredients(), INGREDIENTS);
+    this.dropdowns_addAvailableItems(searchState.getFilteredRecipesUstensils(), USTENSILS);
+    this.dropdowns_addSelectedItems(searchState.selectedAppliances, APPLIANCE);
+    this.dropdowns_addSelectedItems(searchState.selectedIngredients, INGREDIENTS);
+    this.dropdowns_addSelectedItems(searchState.selectedUstensils, USTENSILS);
+    this.filterTags_clearTags();
+    this.filterTags_addToDOM([
       ...searchState.selectedAppliances,
       ...searchState.selectedIngredients,
       ...searchState.selectedUstensils,
     ]);
   }
 
-  addSelectedItems(labelSet, filterType) {
+  filterDropdowns_addToDOM() {
+    const filterDropdownSection = document.getElementById("filter-dropdowns-section");
+    this.dropdowns.forEach((dropdown) => {
+      filterDropdownSection.appendChild(dropdown);
+    });
+  }
+
+  dropdowns_addSelectedItems(labelSet, filterType) {
     const id = `${filterType.key}-${DROPDOWN_FILTER_SECTION.selected}`;
     const container = document.getElementById(id);
     if (!container) {
@@ -49,7 +49,7 @@ class FilterDropdownsManager {
     });
   }
 
-  addAvailableItems(labelSet, filterType) {
+  dropdowns_addAvailableItems(labelSet, filterType) {
     const id = `${filterType.key}-${DROPDOWN_FILTER_SECTION.available}`;
     const container = document.getElementById(id);
     if (!container) {
@@ -62,11 +62,11 @@ class FilterDropdownsManager {
     });
   }
 
-  clearInput(filterType) {
+  dropdowns_clearInput(filterType) {
     document.getElementById(`${filterType.key}-search`).value = "";
   }
 
-  clearLists() {
+  dropdowns_clearLists() {
     FILTER_TYPES.forEach((filterType) => {
       Object.values(DROPDOWN_FILTER_SECTION).forEach((sectionList) => {
         const id = `${filterType.key}-${sectionList}`;
@@ -82,17 +82,17 @@ class FilterDropdownsManager {
     });
   }
 
-  addFilterTags(labelSet) {
+  filterTags_addToDOM(labelSet) {
     const container = document.getElementById("filter-tags-section");
     labelSet.forEach((label) => {
       container.appendChild(createFilterTag(capitalize(label)));
     });
   }
 
-  clearTags() {
+  filterTags_clearTags() {
     const container = document.getElementById("filter-tags-section");
     container.innerHTML = "";
   }
 }
 
-export { FilterDropdownsManager };
+export { FilterManager };
