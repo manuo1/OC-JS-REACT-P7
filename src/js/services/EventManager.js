@@ -140,6 +140,24 @@ class EventManager {
       this.filterDropdowns.updateInnerElements(this.searchManager, this);
     });
   }
+
+  filterDropdowns_OnClickRemoveTag() {
+    const filterTagsSection = document.getElementById("filter-tags-section");
+
+    filterTagsSection.addEventListener("click", (event) => {
+      const button = event.target.closest("button");
+      if (!button) return;
+
+      const tagElement = button.closest("div");
+      if (tagElement) {
+        const value = tagElement.dataset.value;
+        this.searchManager.selectedIngredients.delete(value.toLowerCase());
+        this.searchManager.selectedAppliances.delete(value.toLowerCase());
+        this.searchManager.selectedUstensils.delete(value.toLowerCase());
+        this.filterDropdowns.updateInnerElements(this.searchManager, this);
+      }
+    });
+  }
 }
 
 export { EventManager };

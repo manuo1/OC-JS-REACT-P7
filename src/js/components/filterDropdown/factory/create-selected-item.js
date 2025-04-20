@@ -32,6 +32,3 @@ function createSelectedItem(value) {
 }
 
 export { createSelectedItem };
-
-// const selectedItem = createSelectedItem('Tomate');
-// document.getElementById("selected-items-section").appendChild(selectedItem);

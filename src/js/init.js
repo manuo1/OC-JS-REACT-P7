@@ -13,6 +13,7 @@ function initPage() {
   eventManager.filterDropdowns_onClickRemoveItemFromSelected();
   eventManager.filterDropdowns_filterAvailableAccordingToInput();
   eventManager.filterDropdowns_onClickClearInput();
+  eventManager.filterDropdowns_OnClickRemoveTag();
 }
 
 window.addEventListener("DOMContentLoaded", initPage);
