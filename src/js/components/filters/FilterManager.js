@@ -27,6 +27,7 @@ class FilterManager {
       ...searchState.selectedIngredients,
       ...searchState.selectedUstensils,
     ]);
+    this.filters_updateRecipeCount(searchState.filteredRecipes);
   }
 
   filterDropdowns_addToDOM() {
@@ -92,6 +93,12 @@ class FilterManager {
   filterTags_clearTags() {
     const container = document.getElementById("filter-tags-section");
     container.innerHTML = "";
+  }
+
+  filters_updateRecipeCount(recipes) {
+    const countElement = document.getElementById("recipe-count");
+    const count = recipes.length;
+    countElement.textContent = `${count} recette${count > 1 ? "s" : ""}`;
   }
 }
 
