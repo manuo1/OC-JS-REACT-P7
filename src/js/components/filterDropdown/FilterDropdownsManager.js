@@ -1,6 +1,7 @@
 import { createFilterDropdown } from "./factory/create-one-filter-dropdown.js";
 import { createSelectedItem } from "./factory/create-selected-item.js";
 import { createAvailableItem } from "./factory/create-available-item.js";
+import { createFilterTag } from "./factory/create-filter-tags.js";
 import { INGREDIENTS, APPLIANCE, USTENSILS, DROPDOWN_FILTER_SECTION, FILTER_TYPES } from "../../../config/config.js";
 import { capitalize } from "../../utils/utils.js";
 class FilterDropdownsManager {
@@ -27,6 +28,12 @@ class FilterDropdownsManager {
     this.addSelectedItems(searchState.selectedAppliances, APPLIANCE);
     this.addSelectedItems(searchState.selectedIngredients, INGREDIENTS);
     this.addSelectedItems(searchState.selectedUstensils, USTENSILS);
+    this.clearTags();
+    this.addFilterTags([
+      ...searchState.selectedAppliances,
+      ...searchState.selectedIngredients,
+      ...searchState.selectedUstensils,
+    ]);
   }
 
   addSelectedItems(labelSet, filterType) {
@@ -73,6 +80,18 @@ class FilterDropdownsManager {
         container.innerHTML = "";
       });
     });
+  }
+
+  addFilterTags(labelSet) {
+    const container = document.getElementById("filter-tags-section");
+    labelSet.forEach((label) => {
+      container.appendChild(createFilterTag(capitalize(label)));
+    });
+  }
+
+  clearTags() {
+    const container = document.getElementById("filter-tags-section");
+    container.innerHTML = "";
   }
 }
 
