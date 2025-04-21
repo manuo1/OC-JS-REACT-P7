@@ -11,7 +11,7 @@ function initPage() {
 
   recipeManager.recipes_addToDOM();
   filterManager.filterDropdowns_addToDOM();
-  filterManager.filters_updateInnerElements(searchManager);
+  filterManager.filters_updateAllFilters(searchManager);
   eventManager.filterDropdowns_initToggles();
   eventManager.filterDropdowns_onClickAddAvailableToSelected();
   eventManager.filterDropdowns_onClickRemoveItemFromSelected();

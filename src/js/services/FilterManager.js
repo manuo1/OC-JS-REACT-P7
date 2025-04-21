@@ -1,7 +1,7 @@
-import { createFilterDropdown } from "../components/filters/filterDropdown/factory/filterDropdownFactory.js";
-import { createSelectedItem } from "../components/filters/filterDropdown/factory/selectedItemFactory.js";
-import { createAvailableItem } from "../components/filters/filterDropdown/factory/availableItemFactory.js";
-import { createFilterTag } from "../components/filters/filterTags/factory/create-filter-tags.js";
+import { createFilterDropdown } from "../components/filterDropdown/factory/filterDropdownFactory.js";
+import { createSelectedItem } from "../components/filterDropdown/factory/selectedItemFactory.js";
+import { createAvailableItem } from "../components/filterDropdown/factory/availableItemFactory.js";
+import { createFilterTag } from "../components/filterTags/factory/create-filter-tags.js";
 import { INGREDIENTS, APPLIANCE, USTENSILS, DROPDOWN_FILTER_SECTION, FILTER_TYPES } from "../../config/config.js";
 import { capitalize } from "../utils/utils.js";
 class FilterManager {
@@ -13,7 +13,7 @@ class FilterManager {
     return FILTER_TYPES.map((filterTypes) => createFilterDropdown(filterTypes));
   }
 
-  filters_updateInnerElements(searchManager) {
+  filters_updateAllFilters(searchManager) {
     this.dropdowns_clearLists();
     this.dropdowns_addAvailableItems(searchManager.getFilteredRecipesAppliances(), APPLIANCE);
     this.dropdowns_addAvailableItems(searchManager.getFilteredRecipesIngredients(), INGREDIENTS);

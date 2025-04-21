@@ -1,4 +1,5 @@
 import { RECIPES } from "../../data/recipes.js";
+import { INGREDIENTS, APPLIANCE, USTENSILS } from "../../config/config.js";
 import {
   getIngredientsSetFromRecipe,
   getUstensilsSetFromRecipe,
@@ -78,6 +79,38 @@ class SearchManager {
         this.recipeHasAllSelectedAppliances(recipe)
       );
     });
+  }
+
+  clearSearchInputValue(filterType) {
+    switch (filterType) {
+      case INGREDIENTS:
+        this.ingredientSearchInputValue = "";
+        break;
+      case APPLIANCE:
+        this.applianceSearchInputValue = "";
+        break;
+      case USTENSILS:
+        this.ustensilSearchInputValue = "";
+        break;
+      default:
+        console.warn(`Unknown filterType : ${filterType}`);
+    }
+  }
+
+  addToSelected(filterType, value) {
+    switch (filterType) {
+      case INGREDIENTS:
+        this.selectedIngredients.add(value);
+        break;
+      case APPLIANCE:
+        this.selectedAppliances.add(value);
+        break;
+      case USTENSILS:
+        this.selectedUstensils.add(value);
+        break;
+      default:
+        console.warn(`Unknown filterType : ${filterType}`);
+    }
   }
 }
 

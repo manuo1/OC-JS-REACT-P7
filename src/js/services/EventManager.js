@@ -24,44 +24,25 @@ class EventManager {
 
   page_updateFiltersAndRecipes() {
     this.searchManager.updateFilteredRecipes();
-    this.filterManager.filters_updateInnerElements(this.searchManager, this);
+    this.filterManager.filters_updateAllFilters(this.searchManager, this);
     this.recipeManager.recipes_addToDOM();
   }
 
   filterDropdowns_onClickAddAvailableToSelected() {
-    const availableSection = DROPDOWN_FILTER_SECTION.available;
+    const filterTypes = [INGREDIENTS, APPLIANCE, USTENSILS];
 
-    // Ingredients Filter
-    const availableIngredientsUl = document.getElementById(`${INGREDIENTS.key}-${availableSection}`);
-    availableIngredientsUl.addEventListener("click", (event) => {
-      const li = event.target.closest("li");
-      if (!li || !li.dataset.value) return;
-      this.searchManager.selectedIngredients.add(li.dataset.value);
-      this.filterManager.dropdowns_clearInput(INGREDIENTS);
-      this.searchManager.ingredientSearchInputValue = "";
-      this.page_updateFiltersAndRecipes();
-    });
+    filterTypes.forEach((filterType) => {
+      const ul = document.getElementById(`${filterType.key}-${DROPDOWN_FILTER_SECTION.available}`);
 
-    // Appliances Filter
-    const availableAppliancesUl = document.getElementById(`${APPLIANCE.key}-${availableSection}`);
-    availableAppliancesUl.addEventListener("click", (event) => {
-      const li = event.target.closest("li");
-      if (!li || !li.dataset.value) return;
-      this.searchManager.selectedAppliances.add(li.dataset.value);
-      this.filterManager.dropdowns_clearInput(APPLIANCE);
-      this.searchManager.applianceSearchInputValue = "";
-      this.page_updateFiltersAndRecipes();
-    });
+      ul.addEventListener("click", (event) => {
+        const li = event.target.closest("li");
+        if (!li || !li.dataset.value) return;
 
-    // Ustensils Filter
-    const availableUstensilsUl = document.getElementById(`${USTENSILS.key}-${availableSection}`);
-    availableUstensilsUl.addEventListener("click", (event) => {
-      const li = event.target.closest("li");
-      if (!li || !li.dataset.value) return;
-      this.searchManager.selectedUstensils.add(li.dataset.value);
-      this.filterManager.dropdowns_clearInput(USTENSILS);
-      this.searchManager.ustensilSearchInputValue = "";
-      this.page_updateFiltersAndRecipes();
+        this.searchManager.addToSelected(filterType, li.dataset.value);
+        this.filterManager.dropdowns_clearInput(filterType);
+        this.searchManager.clearSearchInputValue(filterType);
+        this.page_updateFiltersAndRecipes();
+      });
     });
   }
 

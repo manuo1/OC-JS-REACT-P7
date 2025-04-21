@@ -1,4 +1,4 @@
-import { DROPDOWN_FILTER_SECTION as section } from "../../../../../config/config.js";
+import { DROPDOWN_FILTER_SECTION as section } from "../../../../config/config.js";
 
 function createFilterDropdown(filterType) {
   const { key = null, label = null } = filterType;
