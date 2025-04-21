@@ -13,21 +13,22 @@ class FilterManager {
     return FILTER_TYPES.map((filterTypes) => createFilterDropdown(filterTypes));
   }
 
-  filters_updateInnerElements(searchState) {
+  filters_updateInnerElements(searchManager) {
+    searchManager.updateFilteredRecipes();
     this.dropdowns_clearLists();
-    this.dropdowns_addAvailableItems(searchState.getFilteredRecipesAppliances(), APPLIANCE);
-    this.dropdowns_addAvailableItems(searchState.getFilteredRecipesIngredients(), INGREDIENTS);
-    this.dropdowns_addAvailableItems(searchState.getFilteredRecipesUstensils(), USTENSILS);
-    this.dropdowns_addSelectedItems(searchState.selectedAppliances, APPLIANCE);
-    this.dropdowns_addSelectedItems(searchState.selectedIngredients, INGREDIENTS);
-    this.dropdowns_addSelectedItems(searchState.selectedUstensils, USTENSILS);
+    this.dropdowns_addAvailableItems(searchManager.getFilteredRecipesAppliances(), APPLIANCE);
+    this.dropdowns_addAvailableItems(searchManager.getFilteredRecipesIngredients(), INGREDIENTS);
+    this.dropdowns_addAvailableItems(searchManager.getFilteredRecipesUstensils(), USTENSILS);
+    this.dropdowns_addSelectedItems(searchManager.selectedAppliances, APPLIANCE);
+    this.dropdowns_addSelectedItems(searchManager.selectedIngredients, INGREDIENTS);
+    this.dropdowns_addSelectedItems(searchManager.selectedUstensils, USTENSILS);
     this.filterTags_clearTags();
     this.filterTags_addToDOM([
-      ...searchState.selectedAppliances,
-      ...searchState.selectedIngredients,
-      ...searchState.selectedUstensils,
+      ...searchManager.selectedAppliances,
+      ...searchManager.selectedIngredients,
+      ...searchManager.selectedUstensils,
     ]);
-    this.filters_updateRecipeCount(searchState.filteredRecipes);
+    this.filters_updateRecipeCount(searchManager.filteredRecipes);
   }
 
   filterDropdowns_addToDOM() {

@@ -2,18 +2,17 @@ import { RECIPES } from "../../data/recipes.js";
 import { normalize } from "../utils/utils.js";
 class SearchManager {
   constructor() {
-    this.searchText = "";
+    // main search
+    this.mainSearchText = "";
+    this.mainSearchResults = [...RECIPES];
+    // filters
     this.selectedIngredients = new Set();
     this.selectedUstensils = new Set();
     this.selectedAppliances = new Set();
-    this.filteredRecipes = [...RECIPES];
     this.ingredientSearchInputValue = "";
     this.ustensilSearchInputValue = "";
     this.applianceSearchInputValue = "";
-  }
-
-  updateFilteredRecipes() {
-    this.filteredRecipes = [...RECIPES]; // tempo
+    this.filteredRecipes = this.mainSearchResults;
   }
 
   getFilteredRecipesIngredients() {
@@ -69,6 +68,34 @@ class SearchManager {
       normalize(item).toLowerCase().includes(normalize(this.applianceSearchInputValue.toLowerCase()))
     );
     return new Set(filteredAppliancesList.sort());
+  }
+
+  recipeHasAllSelectedIngredients(recipe) {
+    if (this.selectedIngredients.size === 0) return true;
+    const ingredientsInRecipeSet = new Set(recipe.ingredients.map((item) => normalize(item.ingredient)));
+    return [...this.selectedIngredients].every((selected) => ingredientsInRecipeSet.has(normalize(selected)));
+  }
+
+  recipeHasAllSelectedUstensils(recipe) {
+    if (this.selectedUstensils.size === 0) return true;
+    const ustensilsInRecip = new Set(recipe.ustensils.map(normalize));
+    return [...this.selectedUstensils].every((selected) => ustensilsInRecip.has(normalize(selected)));
+  }
+
+  recipeHasAllSelectedAppliances(recipe) {
+    if (this.selectedAppliances.size === 0) return true;
+    const applianceInRecip = new Set([normalize(recipe.appliance)]);
+    return [...this.selectedAppliances].every((selected) => applianceInRecip.has(normalize(selected)));
+  }
+
+  updateFilteredRecipes() {
+    this.filteredRecipes = this.mainSearchResults.filter((recipe) => {
+      return (
+        this.recipeHasAllSelectedIngredients(recipe) &&
+        this.recipeHasAllSelectedUstensils(recipe) &&
+        this.recipeHasAllSelectedAppliances(recipe)
+      );
+    });
   }
 }
 
