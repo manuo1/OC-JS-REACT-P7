@@ -1,10 +1,3 @@
-/**
- * Creates an <li> element representing a selected dropdown option.
- * Includes a remove button to allow the user to unselect the item.
- *
- * @param {string} value - The selected value to display (e.g., "Tomato").
- * @returns {HTMLLIElement} - The fully constructed <li> element with remove button.
- */
 function createSelectedItem(value) {
   const li = document.createElement("li");
   li.className =
