@@ -1,0 +1,16 @@
+function ingredientListFactory(ingredients) {
+  return ingredients
+    .map(({ ingredient, quantity, unit }) => {
+      return `
+          <div>
+            <p class="text-[14px] font-[500]">${ingredient}</p>
+            <p class="text-[14px] font-[500] text-[#7A7A7A]">
+              ${quantity ?? ""} ${unit ?? ""}
+            </p>
+          </div>
+        `;
+    })
+    .join("");
+}
+
+export { ingredientListFactory };

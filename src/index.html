@@ -95,65 +95,7 @@
     <!-- #################### Main - Recipe Cards #################### -->
 
     <main class="container mx-auto max-w-full recipes-section bg-[#EDEDED] pt-[55px] px-[104px] z-0">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[50px]">
-        <!-- ==================== Recipe card ==================== -->
-
-        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
-          <!-- -------------------- Recipe Card Header -------------------- -->
-          <div class="relative h-[253px] bg-white">
-            <!-- ~~~~~~~~~~ Image ~~~~~~~~~~ -->
-            <img
-              src="/src/assets/images/recipes_min/Recette01.jpg"
-              alt="Limonade de coco"
-              class="h-full w-full object-cover"
-            />
-            <!-- ~~~~~~~~~~ Time Badge ~~~~~~~~~~ -->
-            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
-              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">10min</span>
-            </div>
-          </div>
-          <div class="p-[23px] pt-[30px]">
-            <!-- ~~~~~~~~~~ Card Title ~~~~~~~~~~ -->
-            <h2 class="font-[Anton] text-black text-[18px] mb-2">Limonade de coco</h2>
-            <!-- ~~~~~~~~~~ Recipe Section ~~~~~~~~~~ -->
-            <div class="mt-[30px]">
-              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
-              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
-                Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons
-                et le sucre. Mixer jusqu'à avoir la consistence désirée
-              </p>
-            </div>
-            <!-- ~~~~~~~~~~ Ingredients Section ~~~~~~~~~~ -->
-            <div class="mt-[30px]">
-              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
-              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
-                <div>
-                  <p class="text-[14px] font-[500]">Lait de coco</p>
-                  <p class="text-[14px] font-[500]text-[#7A7A7A]">400ml</p>
-                </div>
-                <div>
-                  <p class="text-[14px] font-[500]">Jus de citron</p>
-                  <p class="text-[14px] font-[500]text-[#7A7A7A]">2</p>
-                </div>
-                <div>
-                  <p class="text-[14px] font-[500]">Crème de coco</p>
-                  <p class="text-[14px] font-[500]text-[#7A7A7A]">2 cuillères</p>
-                </div>
-                <div>
-                  <p class="text-[14px] font-[500]">Sucre</p>
-                  <p class="text-[14px] font-[500]text-[#7A7A7A]">30g</p>
-                </div>
-                <div>
-                  <p class="text-[14px] font-[500]">Glaçons</p>
-                  <p class="text-[14px] font-[500]text-[#7A7A7A]"></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- end card -->
-      </div>
+      <div id="recipes-section" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[50px]"></div>
     </main>
   </body>
   <script type="module" src="./js/init.js"></script>

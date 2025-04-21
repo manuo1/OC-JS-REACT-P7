@@ -1,9 +1,10 @@
 import { INGREDIENTS, APPLIANCE, USTENSILS, DROPDOWN_FILTER_SECTION, FILTER_TYPES } from "../../config/config.js";
 
 class EventManager {
-  constructor(searchState, filterManager) {
+  constructor(searchState, filterManager, recipeManager) {
     this.searchManager = searchState;
     this.filterManager = filterManager;
+    this.recipeManager = recipeManager;
   }
 
   filterDropdowns_initToggles() {
@@ -21,6 +22,11 @@ class EventManager {
     });
   }
 
+  page_updateFiltersAndRecipes() {
+    this.filterManager.filters_updateInnerElements(this.searchManager, this);
+    this.recipeManager.recipes_addToDOM();
+  }
+
   filterDropdowns_onClickAddAvailableToSelected() {
     const availableSection = DROPDOWN_FILTER_SECTION.available;
 
@@ -32,7 +38,7 @@ class EventManager {
       this.searchManager.selectedIngredients.add(li.dataset.value.toLowerCase());
       this.filterManager.dropdowns_clearInput(INGREDIENTS);
       this.searchManager.ingredientSearchInputValue = "";
-      this.filterManager.filters_updateInnerElements(this.searchManager, this);
+      this.page_updateFiltersAndRecipes();
     });
 
     // Appliances Filter
@@ -43,7 +49,7 @@ class EventManager {
       this.searchManager.selectedAppliances.add(li.dataset.value.toLowerCase());
       this.filterManager.dropdowns_clearInput(APPLIANCE);
       this.searchManager.applianceSearchInputValue = "";
-      this.filterManager.filters_updateInnerElements(this.searchManager, this);
+      this.page_updateFiltersAndRecipes();
     });
 
     // Ustensils Filter
@@ -54,7 +60,7 @@ class EventManager {
       this.searchManager.selectedUstensils.add(li.dataset.value.toLowerCase());
       this.filterManager.dropdowns_clearInput(USTENSILS);
       this.searchManager.ustensilSearchInputValue = "";
-      this.filterManager.filters_updateInnerElements(this.searchManager, this);
+      this.page_updateFiltersAndRecipes();
     });
   }
 
@@ -68,7 +74,7 @@ class EventManager {
       const li = button.closest("li");
       if (!li || !li.dataset.value) return;
       this.searchManager.selectedIngredients.delete(li.dataset.value.toLowerCase());
-      this.filterManager.filters_updateInnerElements(this.searchManager, this);
+      this.page_updateFiltersAndRecipes();
     });
 
     // Appliances Filter
@@ -78,7 +84,7 @@ class EventManager {
       const li = button.closest("li");
       if (!li || !li.dataset.value) return;
       this.searchManager.selectedAppliances.delete(li.dataset.value.toLowerCase());
-      this.filterManager.filters_updateInnerElements(this.searchManager, this);
+      this.page_updateFiltersAndRecipes();
     });
 
     // Ustensils Filter
@@ -88,7 +94,7 @@ class EventManager {
       const li = button.closest("li");
       if (!li || !li.dataset.value) return;
       this.searchManager.selectedUstensils.delete(li.dataset.value.toLowerCase());
-      this.filterManager.filters_updateInnerElements(this.searchManager, this);
+      this.page_updateFiltersAndRecipes();
     });
   }
 
@@ -97,21 +103,21 @@ class EventManager {
     const ingredientsSearchInptut = document.getElementById(`${INGREDIENTS.key}-search`);
     ingredientsSearchInptut.addEventListener("input", (event) => {
       this.searchManager.ingredientSearchInputValue = event.target.value.toLowerCase();
-      this.filterManager.filters_updateInnerElements(this.searchManager, this);
+      this.page_updateFiltersAndRecipes();
     });
 
     // Appliances Filter
     const appliancesSearchInptut = document.getElementById(`${APPLIANCE.key}-search`);
     appliancesSearchInptut.addEventListener("input", (event) => {
       this.searchManager.applianceSearchInputValue = event.target.value.toLowerCase();
-      this.filterManager.filters_updateInnerElements(this.searchManager, this);
+      this.page_updateFiltersAndRecipes();
     });
 
     // Ustensils Filter
     const ustensilsSearchInptut = document.getElementById(`${USTENSILS.key}-search`);
     ustensilsSearchInptut.addEventListener("input", (event) => {
       this.searchManager.ustensilSearchInputValue = event.target.value.toLowerCase();
-      this.filterManager.filters_updateInnerElements(this.searchManager, this);
+      this.page_updateFiltersAndRecipes();
     });
   }
 
@@ -121,7 +127,7 @@ class EventManager {
     ingredientsSearchInptutClear.addEventListener("click", () => {
       this.filterManager.dropdowns_clearInput(INGREDIENTS);
       this.searchManager.ingredientSearchInputValue = "";
-      this.filterManager.filters_updateInnerElements(this.searchManager, this);
+      this.page_updateFiltersAndRecipes();
     });
 
     // Appliances Filter
@@ -129,7 +135,7 @@ class EventManager {
     appliancesSearchInptutClear.addEventListener("click", () => {
       this.filterManager.dropdowns_clearInput(APPLIANCE);
       this.searchManager.applianceSearchInputValue = "";
-      this.filterManager.filters_updateInnerElements(this.searchManager, this);
+      this.page_updateFiltersAndRecipes();
     });
 
     // Ustensils Filter
@@ -137,7 +143,7 @@ class EventManager {
     ustensilsSearchInptutClear.addEventListener("click", () => {
       this.filterManager.dropdowns_clearInput(USTENSILS);
       this.searchManager.ustensilSearchInputValue = "";
-      this.filterManager.filters_updateInnerElements(this.searchManager, this);
+      this.page_updateFiltersAndRecipes();
     });
   }
 
@@ -154,7 +160,7 @@ class EventManager {
         this.searchManager.selectedIngredients.delete(value.toLowerCase());
         this.searchManager.selectedAppliances.delete(value.toLowerCase());
         this.searchManager.selectedUstensils.delete(value.toLowerCase());
-        this.filterManager.filters_updateInnerElements(this.searchManager, this);
+        this.page_updateFiltersAndRecipes();
       }
     });
   }
