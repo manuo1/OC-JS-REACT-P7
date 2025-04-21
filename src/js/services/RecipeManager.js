@@ -1,4 +1,4 @@
-import { recipeCardFactory } from "./factory/recipeCardFactory.js";
+import { recipeCardFactory } from "../components/recipes/factory/recipeCardFactory.js";
 
 class RecipeManager {
   constructor(searchManager) {

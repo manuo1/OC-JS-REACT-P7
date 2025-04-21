@@ -6,7 +6,7 @@ import {
   getUnselectedItemsFromRecipes,
   getFilteredItemsBySearchInput,
   recipeHasAllSelectedItems,
-} from "../components/recipes/recipeService.js";
+} from "./recipes.js";
 class SearchManager {
   constructor() {
     // main search

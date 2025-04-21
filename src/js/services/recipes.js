@@ -1,4 +1,4 @@
-import { capitalize, normalize, normalizeSet } from "../../utils/utils.js";
+import { capitalize, normalize, normalizeSet } from "../utils/utils.js";
 
 function getIngredientsSetFromRecipe(recipe) {
   return new Set(recipe.ingredients.map((item) => capitalize(item.ingredient)));

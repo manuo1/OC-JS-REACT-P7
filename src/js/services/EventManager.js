@@ -1,8 +1,8 @@
 import { INGREDIENTS, APPLIANCE, USTENSILS, DROPDOWN_FILTER_SECTION, FILTER_TYPES } from "../../config/config.js";
 
 class EventManager {
-  constructor(searchState, filterManager, recipeManager) {
-    this.searchManager = searchState;
+  constructor(searchManager, filterManager, recipeManager) {
+    this.searchManager = searchManager;
     this.filterManager = filterManager;
     this.recipeManager = recipeManager;
   }
@@ -23,6 +23,7 @@ class EventManager {
   }
 
   page_updateFiltersAndRecipes() {
+    this.searchManager.updateFilteredRecipes();
     this.filterManager.filters_updateInnerElements(this.searchManager, this);
     this.recipeManager.recipes_addToDOM();
   }
