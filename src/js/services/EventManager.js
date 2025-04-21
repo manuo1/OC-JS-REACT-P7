@@ -47,36 +47,19 @@ class EventManager {
   }
 
   filterDropdowns_onClickRemoveItemFromSelected() {
-    const selectedSection = DROPDOWN_FILTER_SECTION.selected;
+    const filterTypes = [INGREDIENTS, APPLIANCE, USTENSILS];
 
-    // Ingredients Filter
-    const selectedIngredientsUl = document.getElementById(`${INGREDIENTS.key}-${selectedSection}`);
-    selectedIngredientsUl.addEventListener("click", (event) => {
-      const button = event.target.closest("button");
-      const li = button.closest("li");
-      if (!li || !li.dataset.value) return;
-      this.searchManager.selectedIngredients.delete(li.dataset.value);
-      this.page_updateFiltersAndRecipes();
-    });
+    filterTypes.forEach((filterType) => {
+      const ul = document.getElementById(`${filterType.key}-${DROPDOWN_FILTER_SECTION.selected}`);
 
-    // Appliances Filter
-    const selectedAppliancesUl = document.getElementById(`${APPLIANCE.key}-${selectedSection}`);
-    selectedAppliancesUl.addEventListener("click", (event) => {
-      const button = event.target.closest("button");
-      const li = button.closest("li");
-      if (!li || !li.dataset.value) return;
-      this.searchManager.selectedAppliances.delete(li.dataset.value);
-      this.page_updateFiltersAndRecipes();
-    });
+      ul.addEventListener("click", (event) => {
+        const button = event.target.closest("button");
+        const li = button?.closest("li");
+        if (!li || !li.dataset.value) return;
 
-    // Ustensils Filter
-    const selectedUstensilsUl = document.getElementById(`${USTENSILS.key}-${selectedSection}`);
-    selectedUstensilsUl.addEventListener("click", (event) => {
-      const button = event.target.closest("button");
-      const li = button.closest("li");
-      if (!li || !li.dataset.value) return;
-      this.searchManager.selectedUstensils.delete(li.dataset.value);
-      this.page_updateFiltersAndRecipes();
+        this.searchManager.removeToSelected(filterType, li.dataset.value);
+        this.page_updateFiltersAndRecipes();
+      });
     });
   }
 

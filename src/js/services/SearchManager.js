@@ -112,6 +112,22 @@ class SearchManager {
         console.warn(`Unknown filterType : ${filterType}`);
     }
   }
+
+  removeToSelected(filterType, value) {
+    switch (filterType) {
+      case INGREDIENTS:
+        this.selectedIngredients.delete(value);
+        break;
+      case APPLIANCE:
+        this.selectedAppliances.delete(value);
+        break;
+      case USTENSILS:
+        this.selectedUstensils.delete(value);
+        break;
+      default:
+        console.warn(`Unknown filterType : ${filterType}`);
+    }
+  }
 }
 
 export { SearchManager };
