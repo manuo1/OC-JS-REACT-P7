@@ -3,7 +3,7 @@ import { createSelectedItem } from "../components/filterDropdown/factory/selecte
 import { createAvailableItem } from "../components/filterDropdown/factory/availableItemFactory.js";
 import { createFilterTag } from "../components/filterTags/factory/create-filter-tags.js";
 import { INGREDIENTS, APPLIANCE, USTENSILS, DROPDOWN_FILTER_SECTION, FILTER_TYPES } from "../../config/config.js";
-import { capitalize } from "../utils/utils.js";
+import { dropdowns_addItems } from "./filters.js";
 class FilterManager {
   constructor() {
     this.dropdowns = this.createFilterDropdowns();
@@ -38,29 +38,11 @@ class FilterManager {
   }
 
   dropdowns_addSelectedItems(labelSet, filterType) {
-    const id = `${filterType.key}-${DROPDOWN_FILTER_SECTION.selected}`;
-    const container = document.getElementById(id);
-    if (!container) {
-      console.error(`${id} Does not exits`);
-      return;
-    }
-
-    labelSet.forEach((label) => {
-      container.appendChild(createSelectedItem(capitalize(label)));
-    });
+    dropdowns_addItems(labelSet, filterType, DROPDOWN_FILTER_SECTION.selected, createSelectedItem);
   }
 
   dropdowns_addAvailableItems(labelSet, filterType) {
-    const id = `${filterType.key}-${DROPDOWN_FILTER_SECTION.available}`;
-    const container = document.getElementById(id);
-    if (!container) {
-      console.error(`${id} Does not exits`);
-      return;
-    }
-
-    labelSet.forEach((label) => {
-      container.appendChild(createAvailableItem(capitalize(label)));
-    });
+    dropdowns_addItems(labelSet, filterType, DROPDOWN_FILTER_SECTION.available, createAvailableItem);
   }
 
   dropdowns_clearInput(filterType) {
@@ -86,7 +68,7 @@ class FilterManager {
   filterTags_addToDOM(labelSet) {
     const container = document.getElementById("filter-tags-section");
     labelSet.forEach((label) => {
-      container.appendChild(createFilterTag(capitalize(label)));
+      container.appendChild(createFilterTag(label));
     });
   }
 
