@@ -81,16 +81,16 @@ class SearchManager {
     });
   }
 
-  clearSearchInputValue(filterType) {
+  setSearchInputValue(filterType, value) {
     switch (filterType) {
       case INGREDIENTS:
-        this.ingredientSearchInputValue = "";
+        this.ingredientSearchInputValue = value;
         break;
       case APPLIANCE:
-        this.applianceSearchInputValue = "";
+        this.applianceSearchInputValue = value;
         break;
       case USTENSILS:
-        this.ustensilSearchInputValue = "";
+        this.ustensilSearchInputValue = value;
         break;
       default:
         console.warn(`Unknown filterType : ${filterType}`);
