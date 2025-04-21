@@ -35,7 +35,7 @@ class EventManager {
     availableIngredientsUl.addEventListener("click", (event) => {
       const li = event.target.closest("li");
       if (!li || !li.dataset.value) return;
-      this.searchManager.selectedIngredients.add(li.dataset.value.toLowerCase());
+      this.searchManager.selectedIngredients.add(li.dataset.value);
       this.filterManager.dropdowns_clearInput(INGREDIENTS);
       this.searchManager.ingredientSearchInputValue = "";
       this.page_updateFiltersAndRecipes();
@@ -46,7 +46,7 @@ class EventManager {
     availableAppliancesUl.addEventListener("click", (event) => {
       const li = event.target.closest("li");
       if (!li || !li.dataset.value) return;
-      this.searchManager.selectedAppliances.add(li.dataset.value.toLowerCase());
+      this.searchManager.selectedAppliances.add(li.dataset.value);
       this.filterManager.dropdowns_clearInput(APPLIANCE);
       this.searchManager.applianceSearchInputValue = "";
       this.page_updateFiltersAndRecipes();
@@ -57,7 +57,7 @@ class EventManager {
     availableUstensilsUl.addEventListener("click", (event) => {
       const li = event.target.closest("li");
       if (!li || !li.dataset.value) return;
-      this.searchManager.selectedUstensils.add(li.dataset.value.toLowerCase());
+      this.searchManager.selectedUstensils.add(li.dataset.value);
       this.filterManager.dropdowns_clearInput(USTENSILS);
       this.searchManager.ustensilSearchInputValue = "";
       this.page_updateFiltersAndRecipes();
@@ -73,7 +73,7 @@ class EventManager {
       const button = event.target.closest("button");
       const li = button.closest("li");
       if (!li || !li.dataset.value) return;
-      this.searchManager.selectedIngredients.delete(li.dataset.value.toLowerCase());
+      this.searchManager.selectedIngredients.delete(li.dataset.value);
       this.page_updateFiltersAndRecipes();
     });
 
@@ -83,7 +83,7 @@ class EventManager {
       const button = event.target.closest("button");
       const li = button.closest("li");
       if (!li || !li.dataset.value) return;
-      this.searchManager.selectedAppliances.delete(li.dataset.value.toLowerCase());
+      this.searchManager.selectedAppliances.delete(li.dataset.value);
       this.page_updateFiltersAndRecipes();
     });
 
@@ -93,7 +93,7 @@ class EventManager {
       const button = event.target.closest("button");
       const li = button.closest("li");
       if (!li || !li.dataset.value) return;
-      this.searchManager.selectedUstensils.delete(li.dataset.value.toLowerCase());
+      this.searchManager.selectedUstensils.delete(li.dataset.value);
       this.page_updateFiltersAndRecipes();
     });
   }
@@ -102,21 +102,21 @@ class EventManager {
     // Ingredients Filter
     const ingredientsSearchInptut = document.getElementById(`${INGREDIENTS.key}-search`);
     ingredientsSearchInptut.addEventListener("input", (event) => {
-      this.searchManager.ingredientSearchInputValue = event.target.value.toLowerCase();
+      this.searchManager.ingredientSearchInputValue = event.target.value;
       this.page_updateFiltersAndRecipes();
     });
 
     // Appliances Filter
     const appliancesSearchInptut = document.getElementById(`${APPLIANCE.key}-search`);
     appliancesSearchInptut.addEventListener("input", (event) => {
-      this.searchManager.applianceSearchInputValue = event.target.value.toLowerCase();
+      this.searchManager.applianceSearchInputValue = event.target.value;
       this.page_updateFiltersAndRecipes();
     });
 
     // Ustensils Filter
     const ustensilsSearchInptut = document.getElementById(`${USTENSILS.key}-search`);
     ustensilsSearchInptut.addEventListener("input", (event) => {
-      this.searchManager.ustensilSearchInputValue = event.target.value.toLowerCase();
+      this.searchManager.ustensilSearchInputValue = event.target.value;
       this.page_updateFiltersAndRecipes();
     });
   }
@@ -157,9 +157,9 @@ class EventManager {
       const tagElement = button.closest("div");
       if (tagElement) {
         const value = tagElement.dataset.value;
-        this.searchManager.selectedIngredients.delete(value.toLowerCase());
-        this.searchManager.selectedAppliances.delete(value.toLowerCase());
-        this.searchManager.selectedUstensils.delete(value.toLowerCase());
+        this.searchManager.selectedIngredients.delete(value);
+        this.searchManager.selectedAppliances.delete(value);
+        this.searchManager.selectedUstensils.delete(value);
         this.page_updateFiltersAndRecipes();
       }
     });
