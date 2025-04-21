@@ -1,15 +1,15 @@
-import { normalize, normalizeSet } from "../../utils/utils.js";
+import { capitalize, normalize, normalizeSet } from "../../utils/utils.js";
 
 function getIngredientsSetFromRecipe(recipe) {
-  return new Set(recipe.ingredients.map((item) => item.ingredient));
+  return new Set(recipe.ingredients.map((item) => capitalize(item.ingredient)));
 }
 
 function getUstensilsSetFromRecipe(recipe) {
-  return new Set(recipe.ustensils);
+  return new Set(recipe.ustensils.map(capitalize));
 }
 
 function getApplianceSetFromRecipe(recipe) {
-  return new Set([recipe.appliance]);
+  return new Set([capitalize(recipe.appliance)]);
 }
 
 function getUnselectedItemsFromRecipes(recipeList, getItemSetFromRecipe, selectedItems) {
