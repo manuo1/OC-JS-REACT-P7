@@ -1,5 +1,12 @@
 import { RECIPES } from "../../data/recipes.js";
-import { normalize } from "../utils/utils.js";
+import {
+  getIngredientsSetFromRecipe,
+  getUstensilsSetFromRecipe,
+  getApplianceSetFromRecipe,
+  getUnselectedItemsFromRecipes,
+  getFilteredItemsBySearchInput,
+  recipeHasAllSelectedItems,
+} from "../components/recipes/recipeService.js";
 class SearchManager {
   constructor() {
     // main search
@@ -16,76 +23,51 @@ class SearchManager {
   }
 
   getFilteredRecipesIngredients() {
-    const ingredientsList = [];
-    // Level 1 on filtered recipes
-    this.filteredRecipes.forEach((recipe) => {
-      recipe.ingredients.forEach((item) => {
-        const ingredient = item.ingredient.toLowerCase();
-        if (!this.selectedIngredients.has(ingredient)) {
-          ingredientsList.push(ingredient);
-        }
-      });
-    });
-    // Level 2 on Filter input
-    const filteredIngredientsList = ingredientsList.filter((item) =>
-      normalize(item).toLowerCase().includes(normalize(this.ingredientSearchInputValue.toLowerCase()))
+    // Get all ingredients in filteredRecipes that are not already selected
+    const ingredientsList = getUnselectedItemsFromRecipes(
+      this.filteredRecipes,
+      getIngredientsSetFromRecipe,
+      this.selectedIngredients
     );
-
+    // Get ingredients in ingredientsList that match the input
+    const filteredIngredientsList = getFilteredItemsBySearchInput(ingredientsList, this.ingredientSearchInputValue);
     return new Set(filteredIngredientsList.sort());
   }
 
   getFilteredRecipesUstensils() {
-    // Level 1 on filtered recipes
-    const ustensilsList = [];
-    this.filteredRecipes.forEach((recipe) => {
-      recipe.ustensils.forEach((item) => {
-        const ustensil = item.toLowerCase();
-
-        if (!this.selectedUstensils.has(ustensil)) {
-          ustensilsList.push(ustensil);
-        }
-      });
-    });
-    // Level 2 on Filter input
-    const filteredUstensilList = ustensilsList.filter((item) =>
-      normalize(item).toLowerCase().includes(normalize(this.ustensilSearchInputValue.toLowerCase()))
+    // Get all utensils in filteredRecipes that are not already selected
+    const ustensilsList = getUnselectedItemsFromRecipes(
+      this.filteredRecipes,
+      getUstensilsSetFromRecipe,
+      this.selectedUstensils
     );
+    // Get ustensils in ustensilsList that match the input
+    const filteredUstensilList = getFilteredItemsBySearchInput(ustensilsList, this.ustensilSearchInputValue);
     return new Set(filteredUstensilList.sort());
   }
 
   getFilteredRecipesAppliances() {
-    // Level 1 on filtered recipes
-    const appliancesList = [];
-    this.filteredRecipes.forEach((recipe) => {
-      const appliance = recipe.appliance.toLowerCase();
-
-      if (!this.selectedAppliances.has(appliance)) {
-        appliancesList.push(appliance);
-      }
-    });
-    // Level 2 on Filter input
-    const filteredAppliancesList = appliancesList.filter((item) =>
-      normalize(item).toLowerCase().includes(normalize(this.applianceSearchInputValue.toLowerCase()))
+    // Get all appliances in filteredRecipes that are not already selected
+    const appliancesList = getUnselectedItemsFromRecipes(
+      this.filteredRecipes,
+      getApplianceSetFromRecipe,
+      this.selectedAppliances
     );
+    // Get appliances in appliancesList that match the input
+    const filteredAppliancesList = getFilteredItemsBySearchInput(appliancesList, this.applianceSearchInputValue);
     return new Set(filteredAppliancesList.sort());
   }
 
   recipeHasAllSelectedIngredients(recipe) {
-    if (this.selectedIngredients.size === 0) return true;
-    const ingredientsInRecipeSet = new Set(recipe.ingredients.map((item) => normalize(item.ingredient)));
-    return [...this.selectedIngredients].every((selected) => ingredientsInRecipeSet.has(normalize(selected)));
+    return recipeHasAllSelectedItems(recipe, this.selectedIngredients, getIngredientsSetFromRecipe);
   }
 
   recipeHasAllSelectedUstensils(recipe) {
-    if (this.selectedUstensils.size === 0) return true;
-    const ustensilsInRecip = new Set(recipe.ustensils.map(normalize));
-    return [...this.selectedUstensils].every((selected) => ustensilsInRecip.has(normalize(selected)));
+    return recipeHasAllSelectedItems(recipe, this.selectedUstensils, getUstensilsSetFromRecipe);
   }
 
   recipeHasAllSelectedAppliances(recipe) {
-    if (this.selectedAppliances.size === 0) return true;
-    const applianceInRecip = new Set([normalize(recipe.appliance)]);
-    return [...this.selectedAppliances].every((selected) => applianceInRecip.has(normalize(selected)));
+    return recipeHasAllSelectedItems(recipe, this.selectedAppliances, getApplianceSetFromRecipe);
   }
 
   updateFilteredRecipes() {
