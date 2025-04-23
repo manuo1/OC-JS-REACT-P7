@@ -1,4 +1,6 @@
 import { DROPDOWN_FILTER_SECTION, FILTER_TYPES } from "../../config/config.js";
+const mainSearchInput = document.getElementById("main-search-bar-input");
+const mainSearchClearButton = document.getElementById("main-search-clear");
 
 class EventManager {
   constructor(searchManager, filterManager, recipeManager) {
@@ -35,9 +37,10 @@ class EventManager {
   }
 
   page_updateFiltersAndRecipes() {
+    this.searchManager.updateMainSearchResults();
     this.searchManager.updateFilteredRecipes();
     this.filterManager.filters_updateAllFilters(this.searchManager, this);
-    this.recipeManager.recipes_addToDOM();
+    this.recipeManager.recipes_addToDOM(this.searchManager.mainSearchText);
   }
 
   filterDropdowns_onClickAddAvailableToSelected() {
@@ -105,6 +108,21 @@ class EventManager {
         });
         this.page_updateFiltersAndRecipes();
       }
+    });
+  }
+
+  mainSearch_init() {
+    mainSearchInput.addEventListener("input", (e) => {
+      this.searchManager.setMainSearchTextValue(e.target.value.trim());
+      this.page_updateFiltersAndRecipes();
+    });
+  }
+
+  mainSearch_onClickClearInput() {
+    mainSearchClearButton.addEventListener("click", () => {
+      mainSearchInput.value = "";
+      this.searchManager.setMainSearchTextValue("");
+      this.page_updateFiltersAndRecipes();
     });
   }
 }

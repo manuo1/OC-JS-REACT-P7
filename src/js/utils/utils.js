@@ -13,4 +13,13 @@ function normalizeSet(inputSet) {
   return new Set([...inputSet].map(normalize));
 }
 
-export { capitalize, normalize, normalizeSet };
+function escapeHtml(text) {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+export { capitalize, normalize, normalizeSet, escapeHtml };

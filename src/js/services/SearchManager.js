@@ -8,6 +8,7 @@ import {
   getFilteredItemsBySearchInput,
   recipeHasAllSelectedItems,
 } from "./recipes.js";
+import { refreshRecipesByMainSearch } from "./mainSearch.js";
 class SearchManager {
   constructor() {
     // main search
@@ -127,6 +128,14 @@ class SearchManager {
       default:
         console.warn(`Unknown filterType : ${filterType}`);
     }
+  }
+
+  setMainSearchTextValue(value) {
+    this.mainSearchText = value;
+  }
+
+  updateMainSearchResults() {
+    this.mainSearchResults = refreshRecipesByMainSearch(this.mainSearchText, [...RECIPES]);
   }
 }
 
