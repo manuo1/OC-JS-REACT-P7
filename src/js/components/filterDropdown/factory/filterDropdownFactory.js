@@ -8,15 +8,16 @@ function createFilterDropdown(filterType) {
 
   container.innerHTML = `
       <!-- Zone A : Toggle button -->
-      <button
-        type="button"
-        id="${key}-filter-button"
-        class="w-full flex justify-between items-center h-[56px] px-[16px] gap-[58px] font-[500] bg-white rounded-t-[11px] rounded-b-[11px] shadow"
-        aria-expanded="false"
-      >
+        <button
+          type="button"
+          id="${key}-filter-button"
+          class="w-full flex justify-between items-center h-[56px] px-[16px] gap-[58px] font-[500] bg-white rounded-t-[11px] rounded-b-[11px] shadow"
+          aria-expanded="false"
+          aria-controls="${key}-dropdown-wrapper"
+        >
         <span>${label}</span>
         <span>
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform duration-300 arrow-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
           </svg>
         </span>

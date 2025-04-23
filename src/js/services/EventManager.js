@@ -8,16 +8,28 @@ class EventManager {
   }
 
   filterDropdowns_initToggles() {
-    const keys = FILTER_TYPES.map((item) => item.key);
-    keys.forEach((key) => {
-      const filterButton = document.getElementById(`${key}-filter-button`);
-      const dropdownWrapper = document.getElementById(`${key}-dropdown-wrapper`);
+    const keys = FILTER_TYPES.map((filterType) => filterType.key);
+
+    keys.forEach((filterTypeKey) => {
+      const filterButton = document.getElementById(`${filterTypeKey}-filter-button`);
+      const dropdownWrapper = document.getElementById(`${filterTypeKey}-dropdown-wrapper`);
+      const arrow = filterButton.querySelector(".arrow-icon");
+
+      function close() {
+        dropdownWrapper.classList.add("hidden");
+        filterButton.setAttribute("aria-expanded", "false");
+        filterButton.classList.add("rounded-b-[11px]");
+        arrow.classList.remove("rotate-180");
+      }
+      function open() {
+        dropdownWrapper.classList.remove("hidden");
+        filterButton.setAttribute("aria-expanded", "true");
+        filterButton.classList.remove("rounded-b-[11px]");
+        arrow.classList.add("rotate-180");
+      }
 
       filterButton.addEventListener("click", () => {
-        dropdownWrapper.classList.toggle("hidden");
-        filterButton.classList.toggle("rounded-b-[11px]");
-        const ariaExpanded = filterButton.getAttribute("aria-expanded") === "true";
-        filterButton.setAttribute("aria-expanded", !ariaExpanded);
+        dropdownWrapper.classList.contains("hidden") ? open() : close();
       });
     });
   }
