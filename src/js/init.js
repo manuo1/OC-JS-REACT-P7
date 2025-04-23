@@ -18,6 +18,8 @@ function initPage() {
   eventManager.filterDropdowns_filterAvailableAccordingToInput();
   eventManager.filterDropdowns_onClickClearInput();
   eventManager.filterTags_OnClickRemoveTag();
+  eventManager.mainSearch_init();
+  eventManager.mainSearch_onClickClearInput();
 }
 
 window.addEventListener("DOMContentLoaded", initPage);

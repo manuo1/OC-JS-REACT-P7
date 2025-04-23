@@ -7,9 +7,16 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
+    --color-gray-500: oklch(55.1% 0.027 264.364);
+    --color-gray-600: oklch(44.6% 0.03 256.802);
     --color-black: #000;
     --color-white: #fff;
     --spacing: 0.25rem;
+    --text-sm: 0.875rem;
+    --text-sm--line-height: calc(1.25 / 0.875);
+    --text-lg: 1.125rem;
+    --text-lg--line-height: calc(1.75 / 1.125);
+    --font-weight-semibold: 600;
     --font-weight-bold: 700;
     --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
     --default-transition-duration: 150ms;
@@ -164,9 +171,6 @@
   }
 }
 @layer utilities {
-  .visible {
-    visibility: visible;
-  }
   .absolute {
     position: absolute;
   }
@@ -199,6 +203,9 @@
   }
   .z-1 {
     z-index: 1;
+  }
+  .col-span-full {
+    grid-column: 1 / -1;
   }
   .container {
     width: 100%;
@@ -254,9 +261,6 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 4;
   }
-  .block {
-    display: block;
-  }
   .flex {
     display: flex;
   }
@@ -297,6 +301,9 @@
   .h-\[36px\] {
     height: 36px;
   }
+  .h-\[50px\] {
+    height: 50px;
+  }
   .h-\[52px\] {
     height: 52px;
   }
@@ -312,8 +319,14 @@
   .h-\[76px\] {
     height: 76px;
   }
+  .h-\[150px\] {
+    height: 150px;
+  }
   .h-\[253px\] {
     height: 253px;
+  }
+  .h-\[400px\] {
+    height: 400px;
   }
   .h-\[667px\] {
     height: 667px;
@@ -321,20 +334,20 @@
   .h-full {
     height: 100%;
   }
-  .max-h-0 {
-    max-height: calc(var(--spacing) * 0);
-  }
   .max-h-\[200px\] {
     max-height: 200px;
   }
   .max-h-\[300px\] {
     max-height: 300px;
   }
-  .max-h-\[600px\] {
-    max-height: 600px;
+  .min-h-\[500px\] {
+    min-height: 500px;
   }
   .min-h-\[731px\] {
     min-height: 731px;
+  }
+  .min-h-\[1080px\] {
+    min-height: 1080px;
   }
   .w-3 {
     width: calc(var(--spacing) * 3);
@@ -393,9 +406,6 @@
   .border-collapse {
     border-collapse: collapse;
   }
-  .origin-top {
-    transform-origin: top;
-  }
   .-translate-y-1 {
     --tw-translate-y: calc(var(--spacing) * -1);
     translate: var(--tw-translate-x) var(--tw-translate-y);
@@ -403,14 +413,6 @@
   .-translate-y-1\/2 {
     --tw-translate-y: calc(calc(1/2 * 100%) * -1);
     translate: var(--tw-translate-x) var(--tw-translate-y);
-  }
-  .scale-y-0 {
-    --tw-scale-y: 0%;
-    scale: var(--tw-scale-x) var(--tw-scale-y);
-  }
-  .scale-y-100 {
-    --tw-scale-y: 100%;
-    scale: var(--tw-scale-x) var(--tw-scale-y);
   }
   .rotate-180 {
     rotate: 180deg;
@@ -469,6 +471,9 @@
   .overflow-y-auto {
     overflow-y: auto;
   }
+  .rounded {
+    border-radius: 0.25rem;
+  }
   .rounded-\[10px\] {
     border-radius: 10px;
   }
@@ -522,6 +527,9 @@
   }
   .object-cover {
     object-fit: cover;
+  }
+  .p-8 {
+    padding: calc(var(--spacing) * 8);
   }
   .p-\[23px\] {
     padding: 23px;
@@ -589,6 +597,14 @@
   .font-\[Manrope\] {
     font-family: Manrope;
   }
+  .text-lg {
+    font-size: var(--text-lg);
+    line-height: var(--tw-leading, var(--text-lg--line-height));
+  }
+  .text-sm {
+    font-size: var(--text-sm);
+    line-height: var(--tw-leading, var(--text-sm--line-height));
+  }
   .text-\[12px\] {
     font-size: 12px;
   }
@@ -619,6 +635,14 @@
     --tw-font-weight: 700;
     font-weight: 700;
   }
+  .font-bold {
+    --tw-font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-bold);
+  }
+  .font-semibold {
+    --tw-font-weight: var(--font-weight-semibold);
+    font-weight: var(--font-weight-semibold);
+  }
   .tracking-\[9\%\] {
     --tw-tracking: 9%;
     letter-spacing: 9%;
@@ -635,6 +659,12 @@
   .text-black {
     color: var(--color-black);
   }
+  .text-gray-500 {
+    color: var(--color-gray-500);
+  }
+  .text-gray-600 {
+    color: var(--color-gray-600);
+  }
   .text-white {
     color: var(--color-white);
   }
@@ -647,9 +677,6 @@
   .opacity-0 {
     opacity: 0%;
   }
-  .opacity-100 {
-    opacity: 100%;
-  }
   .shadow {
     --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
@@ -657,9 +684,6 @@
   .outline {
     outline-style: var(--tw-outline-style);
     outline-width: 1px;
-  }
-  .filter {
-    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
   }
   .transition {
     transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter;
@@ -756,21 +780,6 @@
   syntax: "*";
   inherits: false;
   initial-value: 0;
-}
-@property --tw-scale-x {
-  syntax: "*";
-  inherits: false;
-  initial-value: 1;
-}
-@property --tw-scale-y {
-  syntax: "*";
-  inherits: false;
-  initial-value: 1;
-}
-@property --tw-scale-z {
-  syntax: "*";
-  inherits: false;
-  initial-value: 1;
 }
 @property --tw-rotate-x {
   syntax: "*";
@@ -879,59 +888,6 @@
   inherits: false;
   initial-value: solid;
 }
-@property --tw-blur {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-brightness {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-contrast {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-grayscale {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-hue-rotate {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-invert {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-opacity {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-saturate {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-sepia {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-drop-shadow {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-drop-shadow-color {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-drop-shadow-alpha {
-  syntax: "<percentage>";
-  inherits: false;
-  initial-value: 100%;
-}
-@property --tw-drop-shadow-size {
-  syntax: "*";
-  inherits: false;
-}
 @property --tw-duration {
   syntax: "*";
   inherits: false;
@@ -946,9 +902,6 @@
       --tw-translate-x: 0;
       --tw-translate-y: 0;
       --tw-translate-z: 0;
-      --tw-scale-x: 1;
-      --tw-scale-y: 1;
-      --tw-scale-z: 1;
       --tw-rotate-x: initial;
       --tw-rotate-y: initial;
       --tw-rotate-z: initial;
@@ -973,19 +926,6 @@
       --tw-ring-offset-color: #fff;
       --tw-ring-offset-shadow: 0 0 #0000;
       --tw-outline-style: solid;
-      --tw-blur: initial;
-      --tw-brightness: initial;
-      --tw-contrast: initial;
-      --tw-grayscale: initial;
-      --tw-hue-rotate: initial;
-      --tw-invert: initial;
-      --tw-opacity: initial;
-      --tw-saturate: initial;
-      --tw-sepia: initial;
-      --tw-drop-shadow: initial;
-      --tw-drop-shadow-color: initial;
-      --tw-drop-shadow-alpha: 100%;
-      --tw-drop-shadow-size: initial;
       --tw-duration: initial;
       --tw-ease: initial;
     }

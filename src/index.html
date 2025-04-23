@@ -34,12 +34,14 @@
           <input
             type="text"
             placeholder="Rechercher une recette, un ingrédient..."
+            id="main-search-bar-input"
             class="relative rounded-[11px] bg-white w-full h-full text-[16px] pl-[35px]"
           />
           <!-- Clear button (X) -->
           <button
             type="button"
             aria-label="Effacer la recherche"
+            id="main-search-clear"
             class="absolute right-[80px] top-1/2 transform -translate-y-1/2 group"
           >
             <svg
@@ -94,7 +96,7 @@
 
     <!-- #################### Main - Recipe Cards #################### -->
 
-    <main class="container mx-auto max-w-full recipes-section bg-[#EDEDED] pt-[55px] px-[104px] z-0">
+    <main class="container mx-auto max-w-full recipes-section bg-[#EDEDED] pt-[55px] px-[104px] z-0 min-h-[500px]">
       <div id="recipes-section" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[50px]"></div>
     </main>
   </body>
