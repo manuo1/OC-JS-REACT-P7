@@ -1,0 +1,3995 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Les Petits Plats</title>
+    <link rel="icon" href="data:," />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Manrope:wght@200..800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link href="css/tailwind.css" rel="stylesheet" />
+  </head>
+  <body class="max-w-[1440px] mx-auto font-[Manrope]">
+    <!-- #################### Header #################### -->
+    <header>
+      <div
+        class="container mx-auto max-w-full h-[667px] bg-[url(/src/assets/images/header_background.png)] bg-cover z-0"
+      >
+        <!-- ==================== Logo ==================== -->
+        <div class="relative pl-[69px] pt-[51px]">
+          <img src="/src/assets/images/Logo.png" alt="Les Petits Plats" class="h-[25px] w-[207px]" />
+        </div>
+
+        <!-- ==================== Title ==================== -->
+        <h1 class="font-[Anton] text-[44px] text-[#FFD15B] mt-[169px] mx-auto max-w-[700px] text-center">
+          CHERCHEZ PARMI PLUS DE 1500 RECETTES DU QUOTIDIEN,SIMPLES ET DÉLICIEUSES
+        </h1>
+
+        <!-- ==================== Search Bar ==================== -->
+        <div class="relative mx-auto w-full max-w-[954px] h-[72px] mt-[29px]">
+          <!-- Input -->
+          <input
+            type="text"
+            placeholder="Rechercher une recette, un ingrédient..."
+            id="main-search-bar-input"
+            class="relative rounded-[11px] bg-white w-full h-full text-[16px] pl-[35px]"
+          />
+          <!-- Clear button (X) -->
+          <button
+            type="button"
+            aria-label="Effacer la recherche"
+            id="main-search-clear"
+            class="absolute right-[80px] top-1/2 transform -translate-y-1/2 group"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              class="h-6 w-6 stroke-[1.5] group-hover:stroke-[2.5] text-[#7A7A7A] group-hover:text-black transition-all"
+              stroke="currentColor"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+          <!-- Magnifying Glass Icon -->
+          <button
+            class="absolute right-[10px] top-1/2 transform -translate-y-1/2 bg-[#1B1B1B] rounded-[10px] h-[52px] w-[51px] flex items-center justify-center hover:bg-[#FFD15B] transition-colors duration-300 ease-in-out group"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-[35px] h-[35px] text-white group-hover:text-black"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+    <!-- #################### Filters Section #################### -->
+    <div class="container mx-auto max-w-full bg-[#EDEDED] pt-[21px] px-[104px] text-[16px] z-0">
+      <!-- ==================== Filters Header ==================== -->
+      <div class="flex justify-between h-[56px]">
+        <!--  Dropdowns group  -->
+
+        <div id="filter-dropdowns-section" class="flex justify-start gap-[65px] z-1">
+          <!--  Dropdown Filter 1  -->
+          <div class="min-w-[200px] max-w-[195px]" id="ingredients-filter">
+            <!-- Zone A : Toggle button -->
+            <button
+              type="button"
+              id="ingredients-filter-button"
+              class="w-full flex justify-between items-center h-[56px] px-[16px] gap-[58px] font-[500] bg-white rounded-t-[11px] rounded-b-[11px] shadow"
+              aria-expanded="false"
+              aria-controls="ingredients-dropdown-wrapper"
+            >
+              <span>Ingrédients</span>
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 transition-transform duration-300 arrow-icon"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </span>
+            </button>
+
+            <!-- Zone B : hidable section -->
+            <div id="ingredients-dropdown-wrapper" class="hidden">
+              <!-- Zone 1 : Search bar -->
+              <div class="w-full bg-white px-[16px]">
+                <div class="flex items-center border border-[#C6C6C6] pl-[12px] pr-[10px] h-[36px]">
+                  <input
+                    id="ingredients-search"
+                    type="text"
+                    class="flex-1 min-w-0 bg-transparent focus:outline-none text-[#7A7A7A]"
+                  />
+                  <button
+                    id="ingredients-search-clear"
+                    type="button"
+                    aria-label="Effacer la recherche"
+                    class="pr-[5px] group"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      class="h-3.5 w-3.5 stroke-[1.5] group-hover:stroke-[2.5] text-[#7A7A7A] group-hover:text-black transition-all"
+                      stroke="currentColor"
+                    >
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path>
+                    </svg>
+                  </button>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    class="w-4 h-4 text-[#7A7A7A]"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M21 21l-4.35-4.35M10 18a8 8 0 100-16 8 8 0 000 16z"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Zone 2 : List of Selected Items -->
+              <div class="flex bg-white pt-[15px]">
+                <ul
+                  id="ingredients-selected-items-section"
+                  class="flex flex-col w-full max-h-[200px] overflow-y-auto"
+                ></ul>
+              </div>
+
+              <!-- Zone 3 : List of available items -->
+              <div class="dropdown-options flex bg-white pt-[15px] rounded-b-[11px] overflow-hidden">
+                <ul
+                  id="ingredients-available-items-section"
+                  class="options-list flex flex-col w-full max-h-[300px] overflow-y-auto"
+                >
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Ail"
+                  >
+                    <span class="transition group-hover:font-bold">Ail</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Ananas"
+                  >
+                    <span class="transition group-hover:font-bold">Ananas</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Banane"
+                  >
+                    <span class="transition group-hover:font-bold">Banane</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Bananes"
+                  >
+                    <span class="transition group-hover:font-bold">Bananes</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Basilic"
+                  >
+                    <span class="transition group-hover:font-bold">Basilic</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Beurre"
+                  >
+                    <span class="transition group-hover:font-bold">Beurre</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Beurre fondu"
+                  >
+                    <span class="transition group-hover:font-bold">Beurre fondu</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Beurre salé"
+                  >
+                    <span class="transition group-hover:font-bold">Beurre salé</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Bicarbonate"
+                  >
+                    <span class="transition group-hover:font-bold">Bicarbonate</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Blanc de dinde"
+                  >
+                    <span class="transition group-hover:font-bold">Blanc de dinde</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Boudoirs"
+                  >
+                    <span class="transition group-hover:font-bold">Boudoirs</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Carotte"
+                  >
+                    <span class="transition group-hover:font-bold">Carotte</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Champignons de paris"
+                  >
+                    <span class="transition group-hover:font-bold">Champignons de paris</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Chocolat"
+                  >
+                    <span class="transition group-hover:font-bold">Chocolat</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Chocolat au lait"
+                  >
+                    <span class="transition group-hover:font-bold">Chocolat au lait</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Chocolat noir"
+                  >
+                    <span class="transition group-hover:font-bold">Chocolat noir</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Chocolat noir en pépites"
+                  >
+                    <span class="transition group-hover:font-bold">Chocolat noir en pépites</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Citron"
+                  >
+                    <span class="transition group-hover:font-bold">Citron</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Citron vert"
+                  >
+                    <span class="transition group-hover:font-bold">Citron vert</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Concombre"
+                  >
+                    <span class="transition group-hover:font-bold">Concombre</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Coulis de tomate"
+                  >
+                    <span class="transition group-hover:font-bold">Coulis de tomate</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Coulis de tomates"
+                  >
+                    <span class="transition group-hover:font-bold">Coulis de tomates</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Courgette"
+                  >
+                    <span class="transition group-hover:font-bold">Courgette</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Crème de coco"
+                  >
+                    <span class="transition group-hover:font-bold">Crème de coco</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Crème fraîche"
+                  >
+                    <span class="transition group-hover:font-bold">Crème fraîche</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Crème liquide"
+                  >
+                    <span class="transition group-hover:font-bold">Crème liquide</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Cumin"
+                  >
+                    <span class="transition group-hover:font-bold">Cumin</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Eau"
+                  >
+                    <span class="transition group-hover:font-bold">Eau</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Emmental"
+                  >
+                    <span class="transition group-hover:font-bold">Emmental</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Farine"
+                  >
+                    <span class="transition group-hover:font-bold">Farine</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Farine de blé noir"
+                  >
+                    <span class="transition group-hover:font-bold">Farine de blé noir</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Feuilles de laitue"
+                  >
+                    <span class="transition group-hover:font-bold">Feuilles de laitue</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Fraise"
+                  >
+                    <span class="transition group-hover:font-bold">Fraise</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Fromage blanc"
+                  >
+                    <span class="transition group-hover:font-bold">Fromage blanc</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Fromage de chèvre"
+                  >
+                    <span class="transition group-hover:font-bold">Fromage de chèvre</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Fromage à raclette"
+                  >
+                    <span class="transition group-hover:font-bold">Fromage à raclette</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Glace à la vanille"
+                  >
+                    <span class="transition group-hover:font-bold">Glace à la vanille</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Glaçons"
+                  >
+                    <span class="transition group-hover:font-bold">Glaçons</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Gruyère"
+                  >
+                    <span class="transition group-hover:font-bold">Gruyère</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Gruyère râpé"
+                  >
+                    <span class="transition group-hover:font-bold">Gruyère râpé</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Haricots verts"
+                  >
+                    <span class="transition group-hover:font-bold">Haricots verts</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Huile d'olive"
+                  >
+                    <span class="transition group-hover:font-bold">Huile d'olive</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Huile d'olives"
+                  >
+                    <span class="transition group-hover:font-bold">Huile d'olives</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Jambon de parme"
+                  >
+                    <span class="transition group-hover:font-bold">Jambon de parme</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Jambon fumé"
+                  >
+                    <span class="transition group-hover:font-bold">Jambon fumé</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Jus de citron"
+                  >
+                    <span class="transition group-hover:font-bold">Jus de citron</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Kiwi"
+                  >
+                    <span class="transition group-hover:font-bold">Kiwi</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Kiwis"
+                  >
+                    <span class="transition group-hover:font-bold">Kiwis</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Lait"
+                  >
+                    <span class="transition group-hover:font-bold">Lait</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Lait de coco"
+                  >
+                    <span class="transition group-hover:font-bold">Lait de coco</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Lardons"
+                  >
+                    <span class="transition group-hover:font-bold">Lardons</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Lasagnes"
+                  >
+                    <span class="transition group-hover:font-bold">Lasagnes</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Macaronis"
+                  >
+                    <span class="transition group-hover:font-bold">Macaronis</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Mangue"
+                  >
+                    <span class="transition group-hover:font-bold">Mangue</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Mascarpone"
+                  >
+                    <span class="transition group-hover:font-bold">Mascarpone</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Mayonnaise"
+                  >
+                    <span class="transition group-hover:font-bold">Mayonnaise</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Maïs"
+                  >
+                    <span class="transition group-hover:font-bold">Maïs</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Maïzena"
+                  >
+                    <span class="transition group-hover:font-bold">Maïzena</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Menthe"
+                  >
+                    <span class="transition group-hover:font-bold">Menthe</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Miel"
+                  >
+                    <span class="transition group-hover:font-bold">Miel</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Moutarde de dijon"
+                  >
+                    <span class="transition group-hover:font-bold">Moutarde de dijon</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Mozzarella"
+                  >
+                    <span class="transition group-hover:font-bold">Mozzarella</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Mâche"
+                  >
+                    <span class="transition group-hover:font-bold">Mâche</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Noix"
+                  >
+                    <span class="transition group-hover:font-bold">Noix</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Noix de muscade"
+                  >
+                    <span class="transition group-hover:font-bold">Noix de muscade</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Oeuf"
+                  >
+                    <span class="transition group-hover:font-bold">Oeuf</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Oeuf dur"
+                  >
+                    <span class="transition group-hover:font-bold">Oeuf dur</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Oignon"
+                  >
+                    <span class="transition group-hover:font-bold">Oignon</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Olives"
+                  >
+                    <span class="transition group-hover:font-bold">Olives</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Orange"
+                  >
+                    <span class="transition group-hover:font-bold">Orange</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Oseille"
+                  >
+                    <span class="transition group-hover:font-bold">Oseille</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Pain"
+                  >
+                    <span class="transition group-hover:font-bold">Pain</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Pain de mie"
+                  >
+                    <span class="transition group-hover:font-bold">Pain de mie</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Paprika"
+                  >
+                    <span class="transition group-hover:font-bold">Paprika</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Parmesan"
+                  >
+                    <span class="transition group-hover:font-bold">Parmesan</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Pastèque"
+                  >
+                    <span class="transition group-hover:font-bold">Pastèque</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Patate douce"
+                  >
+                    <span class="transition group-hover:font-bold">Patate douce</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Pennes"
+                  >
+                    <span class="transition group-hover:font-bold">Pennes</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Petits poids"
+                  >
+                    <span class="transition group-hover:font-bold">Petits poids</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Poireau"
+                  >
+                    <span class="transition group-hover:font-bold">Poireau</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Poires au jus"
+                  >
+                    <span class="transition group-hover:font-bold">Poires au jus</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Pois cassé"
+                  >
+                    <span class="transition group-hover:font-bold">Pois cassé</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Pois chiches"
+                  >
+                    <span class="transition group-hover:font-bold">Pois chiches</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Poivron rouge"
+                  >
+                    <span class="transition group-hover:font-bold">Poivron rouge</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Pomme"
+                  >
+                    <span class="transition group-hover:font-bold">Pomme</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Pommes"
+                  >
+                    <span class="transition group-hover:font-bold">Pommes</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Pommes de terre"
+                  >
+                    <span class="transition group-hover:font-bold">Pommes de terre</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Poudre d'amendes"
+                  >
+                    <span class="transition group-hover:font-bold">Poudre d'amendes</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Poulet"
+                  >
+                    <span class="transition group-hover:font-bold">Poulet</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Pruneaux"
+                  >
+                    <span class="transition group-hover:font-bold">Pruneaux</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Pâte brisée"
+                  >
+                    <span class="transition group-hover:font-bold">Pâte brisée</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Pâte feuilletée"
+                  >
+                    <span class="transition group-hover:font-bold">Pâte feuilletée</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Pâte sablée"
+                  >
+                    <span class="transition group-hover:font-bold">Pâte sablée</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Pâte à pizza"
+                  >
+                    <span class="transition group-hover:font-bold">Pâte à pizza</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Reblochon"
+                  >
+                    <span class="transition group-hover:font-bold">Reblochon</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Rhubarbe"
+                  >
+                    <span class="transition group-hover:font-bold">Rhubarbe</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Riz blanc"
+                  >
+                    <span class="transition group-hover:font-bold">Riz blanc</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Salade verte"
+                  >
+                    <span class="transition group-hover:font-bold">Salade verte</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Saucisse bretonne ou de toulouse"
+                  >
+                    <span class="transition group-hover:font-bold">Saucisse bretonne ou de toulouse</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Saumon fumé"
+                  >
+                    <span class="transition group-hover:font-bold">Saumon fumé</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Spaghettis"
+                  >
+                    <span class="transition group-hover:font-bold">Spaghettis</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Sucre"
+                  >
+                    <span class="transition group-hover:font-bold">Sucre</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Sucre en poudre"
+                  >
+                    <span class="transition group-hover:font-bold">Sucre en poudre</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Sucre glace"
+                  >
+                    <span class="transition group-hover:font-bold">Sucre glace</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Sucre roux"
+                  >
+                    <span class="transition group-hover:font-bold">Sucre roux</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Sucre vanillé"
+                  >
+                    <span class="transition group-hover:font-bold">Sucre vanillé</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Tagliatelles"
+                  >
+                    <span class="transition group-hover:font-bold">Tagliatelles</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Thon en miettes"
+                  >
+                    <span class="transition group-hover:font-bold">Thon en miettes</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Thon rouge (ou blanc)"
+                  >
+                    <span class="transition group-hover:font-bold">Thon rouge (ou blanc)</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Tomate"
+                  >
+                    <span class="transition group-hover:font-bold">Tomate</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Tomates cerises"
+                  >
+                    <span class="transition group-hover:font-bold">Tomates cerises</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Tomates pelées"
+                  >
+                    <span class="transition group-hover:font-bold">Tomates pelées</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Vermicelles"
+                  >
+                    <span class="transition group-hover:font-bold">Vermicelles</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Viande hachée"
+                  >
+                    <span class="transition group-hover:font-bold">Viande hachée</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Viande hachée 1% de matière grasse"
+                  >
+                    <span class="transition group-hover:font-bold">Viande hachée 1% de matière grasse</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Vin blanc sec"
+                  >
+                    <span class="transition group-hover:font-bold">Vin blanc sec</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Vin rouge"
+                  >
+                    <span class="transition group-hover:font-bold">Vin rouge</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Vinaigre balsamic"
+                  >
+                    <span class="transition group-hover:font-bold">Vinaigre balsamic</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Vinaigre de cidre"
+                  >
+                    <span class="transition group-hover:font-bold">Vinaigre de cidre</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Vinaigrette"
+                  >
+                    <span class="transition group-hover:font-bold">Vinaigrette</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Échalote"
+                  >
+                    <span class="transition group-hover:font-bold">Échalote</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="min-w-[200px] max-w-[195px]" id="appliance-filter">
+            <!-- Zone A : Toggle button -->
+            <button
+              type="button"
+              id="appliance-filter-button"
+              class="w-full flex justify-between items-center h-[56px] px-[16px] gap-[58px] font-[500] bg-white rounded-t-[11px] rounded-b-[11px] shadow"
+              aria-expanded="false"
+              aria-controls="appliance-dropdown-wrapper"
+            >
+              <span>Appareils</span>
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 transition-transform duration-300 arrow-icon"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </span>
+            </button>
+
+            <!-- Zone B : hidable section -->
+            <div id="appliance-dropdown-wrapper" class="hidden">
+              <!-- Zone 1 : Search bar -->
+              <div class="w-full bg-white px-[16px]">
+                <div class="flex items-center border border-[#C6C6C6] pl-[12px] pr-[10px] h-[36px]">
+                  <input
+                    id="appliance-search"
+                    type="text"
+                    class="flex-1 min-w-0 bg-transparent focus:outline-none text-[#7A7A7A]"
+                  />
+                  <button
+                    id="appliance-search-clear"
+                    type="button"
+                    aria-label="Effacer la recherche"
+                    class="pr-[5px] group"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      class="h-3.5 w-3.5 stroke-[1.5] group-hover:stroke-[2.5] text-[#7A7A7A] group-hover:text-black transition-all"
+                      stroke="currentColor"
+                    >
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path>
+                    </svg>
+                  </button>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    class="w-4 h-4 text-[#7A7A7A]"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M21 21l-4.35-4.35M10 18a8 8 0 100-16 8 8 0 000 16z"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Zone 2 : List of Selected Items -->
+              <div class="flex bg-white pt-[15px]">
+                <ul
+                  id="appliance-selected-items-section"
+                  class="flex flex-col w-full max-h-[200px] overflow-y-auto"
+                ></ul>
+              </div>
+
+              <!-- Zone 3 : List of available items -->
+              <div class="dropdown-options flex bg-white pt-[15px] rounded-b-[11px] overflow-hidden">
+                <ul
+                  id="appliance-available-items-section"
+                  class="options-list flex flex-col w-full max-h-[300px] overflow-y-auto"
+                >
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Blender"
+                  >
+                    <span class="transition group-hover:font-bold">Blender</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Casserole"
+                  >
+                    <span class="transition group-hover:font-bold">Casserole</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Cocotte"
+                  >
+                    <span class="transition group-hover:font-bold">Cocotte</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Cuiseur de riz"
+                  >
+                    <span class="transition group-hover:font-bold">Cuiseur de riz</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Four"
+                  >
+                    <span class="transition group-hover:font-bold">Four</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Mixer"
+                  >
+                    <span class="transition group-hover:font-bold">Mixer</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Moule à charlotte"
+                  >
+                    <span class="transition group-hover:font-bold">Moule à charlotte</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Poêle"
+                  >
+                    <span class="transition group-hover:font-bold">Poêle</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Poêle à crêpe"
+                  >
+                    <span class="transition group-hover:font-bold">Poêle à crêpe</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Saladier"
+                  >
+                    <span class="transition group-hover:font-bold">Saladier</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Sauteuse"
+                  >
+                    <span class="transition group-hover:font-bold">Sauteuse</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="min-w-[200px] max-w-[195px]" id="ustensils-filter">
+            <!-- Zone A : Toggle button -->
+            <button
+              type="button"
+              id="ustensils-filter-button"
+              class="w-full flex justify-between items-center h-[56px] px-[16px] gap-[58px] font-[500] bg-white rounded-t-[11px] rounded-b-[11px] shadow"
+              aria-expanded="false"
+              aria-controls="ustensils-dropdown-wrapper"
+            >
+              <span>Ustensiles</span>
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 transition-transform duration-300 arrow-icon"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </span>
+            </button>
+
+            <!-- Zone B : hidable section -->
+            <div id="ustensils-dropdown-wrapper" class="hidden">
+              <!-- Zone 1 : Search bar -->
+              <div class="w-full bg-white px-[16px]">
+                <div class="flex items-center border border-[#C6C6C6] pl-[12px] pr-[10px] h-[36px]">
+                  <input
+                    id="ustensils-search"
+                    type="text"
+                    class="flex-1 min-w-0 bg-transparent focus:outline-none text-[#7A7A7A]"
+                  />
+                  <button
+                    id="ustensils-search-clear"
+                    type="button"
+                    aria-label="Effacer la recherche"
+                    class="pr-[5px] group"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      class="h-3.5 w-3.5 stroke-[1.5] group-hover:stroke-[2.5] text-[#7A7A7A] group-hover:text-black transition-all"
+                      stroke="currentColor"
+                    >
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path>
+                    </svg>
+                  </button>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    class="w-4 h-4 text-[#7A7A7A]"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M21 21l-4.35-4.35M10 18a8 8 0 100-16 8 8 0 000 16z"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Zone 2 : List of Selected Items -->
+              <div class="flex bg-white pt-[15px]">
+                <ul
+                  id="ustensils-selected-items-section"
+                  class="flex flex-col w-full max-h-[200px] overflow-y-auto"
+                ></ul>
+              </div>
+
+              <!-- Zone 3 : List of available items -->
+              <div class="dropdown-options flex bg-white pt-[15px] rounded-b-[11px] overflow-hidden">
+                <ul
+                  id="ustensils-available-items-section"
+                  class="options-list flex flex-col w-full max-h-[300px] overflow-y-auto"
+                >
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Bol"
+                  >
+                    <span class="transition group-hover:font-bold">Bol</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Casserole"
+                  >
+                    <span class="transition group-hover:font-bold">Casserole</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Cocotte minute"
+                  >
+                    <span class="transition group-hover:font-bold">Cocotte minute</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Couteau"
+                  >
+                    <span class="transition group-hover:font-bold">Couteau</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Cuillère en bois"
+                  >
+                    <span class="transition group-hover:font-bold">Cuillère en bois</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Cuillère à melon"
+                  >
+                    <span class="transition group-hover:font-bold">Cuillère à melon</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Cuillère à soupe"
+                  >
+                    <span class="transition group-hover:font-bold">Cuillère à soupe</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Fouet"
+                  >
+                    <span class="transition group-hover:font-bold">Fouet</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Fourchette"
+                  >
+                    <span class="transition group-hover:font-bold">Fourchette</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Louche"
+                  >
+                    <span class="transition group-hover:font-bold">Louche</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Moule"
+                  >
+                    <span class="transition group-hover:font-bold">Moule</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Moule à gateaux"
+                  >
+                    <span class="transition group-hover:font-bold">Moule à gateaux</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Moule à tarte"
+                  >
+                    <span class="transition group-hover:font-bold">Moule à tarte</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Moule à tartelettes (6)"
+                  >
+                    <span class="transition group-hover:font-bold">Moule à tartelettes (6)</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Passoire"
+                  >
+                    <span class="transition group-hover:font-bold">Passoire</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Plaque de cuisson"
+                  >
+                    <span class="transition group-hover:font-bold">Plaque de cuisson</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Plat à gratin"
+                  >
+                    <span class="transition group-hover:font-bold">Plat à gratin</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Poêle à frire"
+                  >
+                    <span class="transition group-hover:font-bold">Poêle à frire</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Presse citron"
+                  >
+                    <span class="transition group-hover:font-bold">Presse citron</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Rouleau à patisserie"
+                  >
+                    <span class="transition group-hover:font-bold">Rouleau à patisserie</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Râpe à fromage"
+                  >
+                    <span class="transition group-hover:font-bold">Râpe à fromage</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Saladier"
+                  >
+                    <span class="transition group-hover:font-bold">Saladier</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Spatule"
+                  >
+                    <span class="transition group-hover:font-bold">Spatule</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Verres"
+                  >
+                    <span class="transition group-hover:font-bold">Verres</span>
+                  </li>
+                  <li
+                    class="group flex items-center justify-between w-full hover:bg-[#FFD15B] text-[#1B1B1B] px-[16px] py-[6px]"
+                    data-value="Économe"
+                  >
+                    <span class="transition group-hover:font-bold">Économe</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--  Recipe Count  -->
+        <div class="ml-auto flex items-center">
+          <span id="recipe-count" class="font-[Anton] text-[21px] text-[#1B1B1B] pt-[10px]">50 recettes</span>
+        </div>
+      </div>
+      <!-- ==================== Selected Filters Tags ==================== -->
+      <div id="filter-tags-section" class="flex flex-wrap gap-[10px] pt-[20px]"></div>
+    </div>
+
+    <!-- #################### Main - Recipe Cards #################### -->
+
+    <main class="container mx-auto max-w-full recipes-section bg-[#EDEDED] pt-[55px] px-[104px] z-0 min-h-[500px]">
+      <div id="recipes-section" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[50px]">
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette01.jpg"
+              alt="Limonade de Coco"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">10min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Limonade de Coco</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons
+                et le sucre. Mixer jusqu'à avoir la consistence désirée
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Lait de coco</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">400 ml</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Jus de citron</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">2</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Crème de coco</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">2 cuillères à soupe</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Sucre</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">30 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Glaçons</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette02.jpg"
+              alt="Poisson Cru à la tahitienne"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">60min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Poisson Cru à la tahitienne</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Découper le thon en dés, mettre dans un plat et recouvrir de jus de citron vert (mieux vaut prendre un
+                plat large et peu profond). Laisser reposer au réfrigérateur au moins 2 heures. (Si possible faites-le
+                le soir pour le lendemain. Après avoir laissé mariner le poisson, coupez le concombre en fines rondelles
+                sans la peau et les tomates en prenant soin de retirer les pépins. Rayer la carotte. Ajouter les légumes
+                au poissons avec le citron cette fois ci dans un Saladier. Ajouter le lait de coco. Pour ajouter un peu
+                plus de saveur vous pouvez ajouter 1 à 2 cuillères à soupe de Crème de coco
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Thon Rouge (ou blanc)</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">200 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Concombre</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Tomate</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">2</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Carotte</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Citron Vert</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">5</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Lait de Coco</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">100 ml</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette03.jpg"
+              alt="Poulet coco réunionnais"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">80min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Poulet coco réunionnais</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Découper le poulet en morceaux, les faire dorer dans une cocotte avec de l'huile d'olive. Salez et
+                poivrez. Une fois doré, laisser cuire en ajoutant de l'eau. Au bout de 30 minutes, ajouter le coulis de
+                tomate, le lait de coco ainsi que le poivron et l'oignon découpés en morceaux. Laisser cuisiner 30
+                minutes de plus. Servir avec du riz
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Poulet</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Lait de coco</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">400 ml</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Coulis de tomate</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">25 cl</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Oignon</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Poivron rouge</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Huile d'olive</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1 cuillères à soupe</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette04.jpg"
+              alt="Salade de riz"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">50min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Salade de riz</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Faire cuire le riz. Une fois le riz cuit, le laisser refroidir. Couper les oeufs dur en quarts ou en
+                lamelle au choix, coupez le tomates en dés, ajouter au riz les oeufs, les tomates, le poisson, le maïs
+                et la vinaigrette. Ajouter au gout de chacun des corniches, olives etc..
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Riz blanc</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">500 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Thon en miettes</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">200 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Tomate</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">2</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Oeuf dur</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">2</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Maïs</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">300 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Vinaigrette</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">5 cl</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette05.jpg"
+              alt="Tarte au thon"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">45min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Tarte au thon</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Étaler la pâte feuilleté aux dimensions du moule, étaler la moutarde sur la pâte feuilleté, ajouter le
+                thon. Découper les tomates en rondelles et les poser sur le poisson, ajouter un peu de crème fraîche sur
+                toute la tarte et recouvrez de gruyère râpé. Cuire au four 30 minutes
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Pâte feuilletée</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Thon en miettes</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">130 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Tomate</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">2</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Crème fraîche</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">2 cuillères à soupe</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">gruyère râpé</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">100 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Moutarde de Dijon</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette06.jpg"
+              alt="Tarte aux pommes"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">50min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Tarte aux pommes</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Commencez par mélanger les oeufs le sucre et le sucre vanillé dans un saladier, découper les pommes en
+                tranches, ajouter la crème fraîche aux oeufs. Une fois que tout est pret, étalez la tarte dans le moule.
+                N'oubliez pas de piquer le fond avec une fourchette avant de positionner les pommes sur la tarte.
+                Finalement verser la préparation à base d'oeufs et de crème fraîche. Laisser cuire au four pendant 30
+                minutes
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Pâte brisée</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Pomme</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">3</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Oeuf</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">2</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Crème fraîche</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">25 cl</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Sucre en Poudre</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">100 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Sucre vanillé</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1 sachets</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette07.jpg"
+              alt="Tartelettes au chocolat et aux fraises"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">50min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Tartelettes au chocolat et aux fraises</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Étaler la pate dans les moules à tartelette. Faire cuire la pate 30 minutes. Découper le chocolat en
+                morceau et le faire chauffer, y ajouter la crème liquide, ajouter le beurre et remuer jusqu'à avoir une
+                pâte homogène. Verser la pate sur les tartelettes. Couper les fraises en 2 et les positionner sur
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Pâte sablée</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Chocolat au lait</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">300 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Crème liquide</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">80 cl</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Beurre</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">30 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Fraise</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">6</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img src="/src/assets/images/recipes_min/Recette08.jpg" alt="Brownie" class="h-full w-full object-cover" />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">60min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Brownie</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Hachez les noix grossièrement. Faire fondre le chocolat avec le beurre. Mélanger les oeufs et le sucre
+                et mélanger au chocolat. Ajouter la farine. Mélanger afin d'avoir quelque chose d'homogène puis
+                incorporer les noix. Verser la préparation dans un moule de préférence rectangulaire. Cuire 2O à 25
+                minutes à 180°. Sortez du four et attendez quelques minutes pour démouler. Servir avec une boule de
+                glace pour plus de gourmandise.
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Noix</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">180 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Chocolat noir</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">150 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Beurre</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">120 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Oeuf</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">2</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Sucre en Poudre</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">110 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">farine</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">90 grammes</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette09.jpg"
+              alt="Salade Méditerannéene fraîche au chèvre"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">15min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Salade Méditerannéene fraîche au chèvre</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Peler le concombre le couper 2, retirer les pépins. Couper les olives en morceaux, ainsi que le fromage
+                de chèvre. Ajouter le basilic ainsi que le vinaigre balsamic et l'huile d'olives à votre gout.
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Concombre</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Olives</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]"></p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Fromage de chèvre</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">150 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Vinaigre Balsamic</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]"></p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Huile d'olive</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]"></p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Basilic</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette10.jpg"
+              alt="Tartiflette"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">60min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Tartiflette</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Commencer par cuire les pommes de terre dans l'eau bouillante. Puis épluchez les et coupez les en
+                rondelles. Émincer les oignons puis les faire dorer dans du beurre. Ajouter le jambon fumé coupé en en
+                morceaux ainsi que les pommes de terres. Salez, poivrez à votre gout ( et celui de vos convives )
+                Laissez cuisiner durant environ 10 minutes puis ajouter le vin blanc. Après 5 minutes, mettre le tout
+                dans un plat à gratin. Coupez le reblochon, soit en tranches, soit le couper en 2 dans le sens de
+                l'épaisseur et recouvrir les pommes de terre. Cuire au four (environ 220°) durant 25 minutes. C'est prêt
+                !
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Reblochon</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Pommes de terre</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">4.5 kg</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Jambon fumé</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">2 tranches</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Oignon</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">300 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Vin blanc sec</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">30 cl</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette11.jpg"
+              alt="Salade tomate, mozzarella et pommes"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">10min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Salade tomate, mozzarella et pommes</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Commencer par couper les feuilles de salade, ajouter les tomates cerises et le fromage découpé en cubes
+                ou en boules avec la cuillère à melon. Découper le jambon de parme en fines lamelles. Ajouter la pomme
+                elle aussi découpée en petit morceaux. Assaisonnez à votre gout.
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Tomates cerises</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">250 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Mozzarella</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">150 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Jambon de parme</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">4 tranches</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Pommes</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Salade Verte</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Vinaigrette</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">5 cl</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette12.jpg"
+              alt="Compote pomme rhubarbe"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">40min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Compote pomme rhubarbe</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Éplucher les fruits et les couper en morceaux, les mettre dans une casserole en ajoutant l'eau et le
+                sucre vanillé. Laisser cuire 15 minutes en remuant régulièrement.
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Rhubarbe</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">160 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Pommes</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">8</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Sucre vanillé</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">6 sachets</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Eau</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">0.5 tasses</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette13.jpg"
+              alt="Salade mâchée de patates"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">40min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Salade mâchée de patates</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Cuire les pommes de terre environ 30 minutes. Découper les échalotes finement. Durant la cuisson des
+                pommes de terre. Préparez la vinaigrette avec l'huile d'olive et le vinaigre de cidre. Salez poivrez à
+                discrétion. Dans un saladier, mettre le mâche. Ajouter
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Mâche</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">60 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Pommes de terre</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">200 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Échalote</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">2</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Vinaigre de cidre</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1 cuillère à soupe</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">huile d'olive</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">2 cuillère à soupe</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette14.jpg"
+              alt="Galette Bretonne Saucisse et Fromage à raclette"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">100min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Galette Bretonne Saucisse et Fromage à raclette</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Mélanger la farine et les oeufs, faire fondre 25 grammes de beurre et ajouter à la pâte. Ajouter du sel.
+                Laisser reposer 1 heure. Faire les galettes et laisser refroidir. Faire chauffer les saucisses avec du
+                beurre et l'oignon. Enrouler les saucisses dans les crêpes avec une partie du fromage. Mettre le reste
+                du fromage à raclette par dessus les crêpes. Passer four pendant 20 minutes
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Saucisse bretonne ou de Toulouse</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">2</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Farine de blé noir</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">130 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Oeuf</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Fromage à raclette</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">300 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Oignon</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Beurre</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">75 grammes</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette15.jpg"
+              alt="Crêpes Chocolat Banane"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">60min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Crêpes Chocolat Banane</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Mélangez dans un saladier, la farine, les oeufs, et le lait. Battez jusqu'à avoir une masse homogène.
+                Pendant ce temps faites fondre le beurre et ajoutez en une partie à la pâte à crêpes. Faire fondre le
+                chocolat ( avec le reste du beurre salé ). Lorsque vous chauffez les crêpes. Ajouter le chocolat fondu
+                et les bananes coupées en rondelles. Ajoutez une touche de chantilly pour les gourmands
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Oeuf</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">3</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Farine</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">250 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Lait</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">600 ml</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Beurre salé</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">30 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Chocolat au lait</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">100 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Banane</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">4</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette16.jpg"
+              alt="Gratin de pâtes à la tomate"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">45min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Gratin de pâtes à la tomate</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Faire cuire les pâtes si vous n'avez pas de pennes des coquillettes peuvent faire l'affaire. Découper
+                les tomates en petits morceaux, soit en tranches soit en dés. Coupez le basilic en petites morceaux et
+                mélangez le aux tomates. Coupez la mozzarella en tranche. Préchauffez le four à 200°. Alternez entre
+                couches de pattes et couches de tomates, terminez par une couche de pates et recouvrir du fromage.
+                Laisser au four 30 minutes et régalez vous ! Une recette simple qui fera plaisir au petits comme aux
+                grands.
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Tomate</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">500 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Mozzarella</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">250 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Pennes</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">500 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Basilic</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1 tiges</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">huile d'olives</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">2 cuillère à soupe</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette17.jpg"
+              alt="Smoothie à la fraise"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">15min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Smoothie à la fraise</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Coupez les fraises en morceaux, découpez la chaire de la pastèque en retirant les pépins. Mettre le tout
+                dans le blender. Ajouter un cuillère à soupe de juste de citron ainsi que les glaçons. Ajoutez quelques
+                feuilles de menthe pour plus de fraîcheur. Mixez le tout. Servir et déguster.
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Fraise</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">500 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Pastèque</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">0.5</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Jus de citron</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1 cuillères à soupe</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Glaçons</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">8</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Menthe</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette18.jpg"
+              alt="Smoothie ananas et vanille"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">10min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Smoothie ananas et vanille</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Séparez 1/5ème d'Ananas ( une belle tranche qui servira pour la décoration des verres ), mettre le reste
+                coupé en cubes au blender, ajouter la glace à la vanille et le lait. Mixez. Servir et décorer avec
+                l'ananas restant. C'est prêt
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Ananas</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Glace à la vanille</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">500 ml</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Lait</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">50 cl</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette19.jpg"
+              alt="Shake Banane Kiwi"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">0min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Shake Banane Kiwi</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Coupez les fruits en morceaux, ajouter le jus de citron et le lait ainsi que le sucre glace. Mixez.
+                Ajoutez des glaçons si le lait n'a pas été mis au frais.
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Kiwi</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">4</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Citron</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Lait</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1 litres</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Sucre glace</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">30 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Banane</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette20.jpg"
+              alt="Pates Carbonara"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">30min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Pates Carbonara</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Faire cuire les pates comme indiqué sur le paquet. Dorer les lardons dans une sauteuse avec l'huile
+                d'olive. Ajouter la crème fraîche et baisser le feu au minimum. Quand les Tagliatelles sont prêtes les
+                mettre dans la sauteuse et bien mélanger le tout en ajoutant le jaune d'oeuf. Servir et ajouter le
+                parmesan râpé.
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Tagliatelles</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">500 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Lardons</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">150 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Crème fraîche</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">200 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Parmesan</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">100 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">huile d'olive</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1 cuillères à soupe</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette21.jpg"
+              alt="Spaghettis à la bolognaise"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">30min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Spaghettis à la bolognaise</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Cuisiner la viande hachée dans une poêle à frire. Dans une autre faire cuire les oignons découpés en
+                fins dés avec un peu de beurre. Ajouter du vin rouge. Mélanger les oignons avec la viande hachée. Faire
+                cuire les pates le temps indiqué sur le paquet. Ajouter le coulis de tomates à la viande hachée. Une
+                fois que les pates sont cuites, ajouter la crème fraîche à la viande hachée. Servir.
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Spaghettis</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">400 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Oignon</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">2</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Coulis de tomate</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">300 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Viande hachée 1% de matière grasse</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">400 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Vin rouge</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">20 cl</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Crème fraîche</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1 cuillères à soupe</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette22.jpg"
+              alt="Fondant au chocolat"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">30min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Fondant au chocolat</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Faire fondre le chocolat et le beurre au bain marie. Dans un saladier battre les oeufs avec le sucre
+                jusqu'à obtenir une texture de type mousse. Ajouter la farine ainsi que le mélange de beurre et chocolat
+                fondu. Beurrez le moule à gateaux. Mettre au four préchauffé à 200° puis faites chauffer pendant 15
+                minutes. C'est prêt. Servir avec une boule de glace ou une crème dessert.
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Beurre</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">160 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Chocolat noir</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">200 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Farine</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">50 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Oeuf</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">4</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Sucre</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">150 grammes</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette23.jpg"
+              alt="Quiche lorraine"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">60min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Quiche lorraine</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Étaler la pate dans un moule et la piquer.Parsemer de beurre. Faire chauffer les lardon dans une poêle.
+                Battre les oeufs en ajoutant la crème fraîche et le lait. Finalement ajouter les lardons, salez poivrez
+                à votre gout. Verser l'ensemble sur la pâte. Cuire environ 50 minutes.
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Pâte brisée</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">200 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Lardons</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">200 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Beurre</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">30 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Oeuf</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">3</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Crème Fraîche</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">20 cl</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Lait</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">20 cl</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette24.jpg"
+              alt="Salade de pâtes"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">40min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Salade de pâtes</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Découper le concombre et les tomates en dés, les mettre dans un saladier avec le mais et les miettes de
+                poisson, ajouter les pates. Ajouter la mayonnaise. Mélanger le tout et servir frais.
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Thon en miettes</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">160 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Maïs</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">60 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Tomate</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Concombre</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">0.5</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Macaronis</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">300 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Mayonnaise</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">2 cuillères à soupe</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img src="/src/assets/images/recipes_min/Recette25.jpg" alt="Cookies" class="h-full w-full object-cover" />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">30min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Cookies</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Faire fondre le beurre et le mélanger avec le sucre. Finalement ajouter l'oeuf. Ajouter la farine tout
+                en mélangeant peu pa peu pour avoir une masse sans grumeaux. Ajouter les pépites de chocolat. Faire, une
+                plaque de cuisson de petites boules pour les cookies. Mettre au four à 180° pour 10 minutes.
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Sucre</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">100 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Beurre</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">100 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Farine</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">100 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Chocolat noir en pépites</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">100 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Oeuf</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette26.jpg"
+              alt="Soupe de tomates"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">25min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Soupe de tomates</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Verser de l'huile dans une cocotte minute couper les légumes et les verser dans l'huile chaude. Laisser
+                cuire et remuer pendant 10 minutes. Passer aux mixer. Servir.
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Tomate</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">6</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Pommes de terre</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Huile d'olives</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]"></p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Oignon</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Ail</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1 gousses</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette27.jpg"
+              alt="Soupe à l'oseille"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">15min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Soupe à l'oseille</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Faire fondre l'oseille avec du beurre demi sel, ajouter un litre d'eau. Ajouter les vermicelles. Laisser
+                cuire. une fois prêt, sortir du feu et après 5 minutes ajouter le jaune d'oeuf et la crème fraîche
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Oseille</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">2</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Oeuf</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Crème fraîche</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">4 cuillère à soupe</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Vermicelles</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1 verres</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Beurre salé</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">50 grammes</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette28.jpg"
+              alt="Soupe de poireaux"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">80min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Soupe de poireaux</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Émincer les blanc de poireaux et les faire chauffer dans 25 grammes de beurre. AJouter les pommes de
+                terres coupées en morceaux. Ajouter l'eau et laisser mijoter pour 45 minutes. Chauffer l'oseille avec le
+                beurre restant puis incorporer le tout. Mixez. Ajoutez la crème. Bon appetit.
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Poireau</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">3</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Pommes de terre</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">400 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Oseille</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">75 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Beurre</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">50 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Crème fraîche</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">10 cl</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette29.jpg"
+              alt="Houmous Express"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">30min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Houmous Express</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Prendre les pois chiches, les mettre dans le mixer avec de l'huile d'olive, ajouter le jus des 2 citrons
+                et du paprika selon le gout.
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Pois chiches</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1 boites</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Ail</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1 gousses</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Citron</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">2</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Huile d'olive</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]"></p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Paprika</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette30.jpg"
+              alt="Purée de pois cassés"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">60min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Purée de pois cassés</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Mettre tous les ingrédients dans une cocotte. ajouter de l'eau pour recouvrir l'ensemble et laisser
+                cuire à petit feu pour 1 heure. Passer au mixer. Salez, poivrez. C'est prêt
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Pois Cassé</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">500 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Oignon</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Ail</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">2 gousses</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette31.jpg"
+              alt="Jardinière de légumes"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">60min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Jardinière de légumes</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Découper en cubes les carottes et pommes de terre. Faire revenir dans du beurre. Ajouter les lardons,
+                une fois les lardons dorés, ajouter un grand verre d'eau. Ajouter les petit poids et les haricots verts
+                ( tous deux pré cuits ). Ajouter Sel, poivre, thyms et laurier
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Carotte</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">2</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Pommes de terre</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">2</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Haricots verts</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">150 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Petits poids</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">100 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Lardons</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">150 grammes</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette32.jpg"
+              alt="Croque Monsieur à la dinde"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">20min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Croque Monsieur à la dinde</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Beurrer les tranches de pain, ajouter entre 2 tranches de pain de mie 1 tranche d’emmental, une de blanc
+                de dinde, et une autre d'emmental. Dans un récipient, mélanger le gruyère rappé avec le lait et la noix
+                de muscade. Mettre sur les croque monsieur. Placer au four durant 10 minutes.
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Pain de mie</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">8 tranches</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Blanc de dinde</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">4 tranches</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Emmental</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">8 tranches</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Gruyère</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">100 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Lait</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">5 cl</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Noix de muscade</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1 pincées</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette33.jpg"
+              alt="Sandwich au saumon fumé"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">5min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Sandwich au saumon fumé</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Mélanger le fromage blanc avec le citron. Ajouter un peu de sel et poivre à votre gout. Faire dorer le
+                pain de mie. Puis étaler le mélange. Ajouter une feuille de salade puis le saumon fumé. C'est prêt.
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Pain de mie</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">8 tranches</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Saumon Fumé</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">4 tranches</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Feuilles de laitue</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">4</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Fromage blanc</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">4 cuillères à soupe</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Jus de citron</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1 cuillères à soupe</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette34.jpg"
+              alt="Purée de patate douce"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">25min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Purée de patate douce</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Éplucher les patates douces et coupez les en morceaux. Les faire cuire durant 20 minute dans une
+                casserole d'eau bouillante. Passer au mixer en ajoutant la crème et l'huile d'olive à son gout. Salez,
+                poivrez. Pressez l'orange et ajouter le jus à l'ensemble. Servir.
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Patate douce</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">800 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Crème fraîche</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">20 cl</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Huile d'olive</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]"></p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Orange</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette35.jpg"
+              alt="Purée de carottes"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">25min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Purée de carottes</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Éplucher les légumes, les couper en morceaux et les mettre à cuire dans une cocotte minute environ 15
+                minutes. Mixer en ajoutant le beurre, la crème. Ajouter le cumin et la noix de muscade.
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Carotte</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">6</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Pommes de terre</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Beurre</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">20 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Crème fraîche</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">2 cuillères à soupe</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Cumin</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1 cuillères à café</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Noix de muscade</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1 pincées</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette36.jpg"
+              alt="Lasagne Courgettes et Chèvre"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">35min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Lasagne Courgettes et Chèvre</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Raper les courgette et les faire revenir durant 15 minutes. Ajouter les fromages de chèvre frais.
+                Préparer la béchamel avec le lait et la maïzena. Salez poivrez, ajouter de la noix de muscade selon les
+                gouts. Dans un plat, mettre un peu de sauces au fond, puis des lasagnes, puis des courgettes etc...
+                terminer par de la sauces et ajouter le gruyère. Passer au four à 180° durant 20 à 25 minutes.
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Courgette</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">2</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Fromage de chèvre</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">4</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Lait</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">25 cl</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Lasagnes</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">5 feuilles</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Gruyère</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">40 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Maïzena</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1 cuillères à soupe</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette37.jpg"
+              alt="Courgettes farcies au boeuf"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">60min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Courgettes farcies au boeuf</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Couper les courgettes dans le sens de la longueur. Vider les courgette dans un saladier. Réserver.Faire
+                revenir la chair des courgettes dans 25cl d'huile d'olive. Ajouter l'oignon puis la viande hachée.
+                Mettre la farce dans les courgettes. Ajouter le coulis de tomates. Mettre au four pendant 30 minutes.
+                Avant la fin de la cuisson ajouter le fromage râpé
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Courgette</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">2</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Viande hachée</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">600 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Huile d'olives</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">25 cl</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Oignon</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Coulis de tomates</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">20 cl</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Gruyère</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">50 grammes</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette38.jpg"
+              alt="Pain Perdu"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">20min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Pain Perdu</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Fouettez les oeufs, le sucre et le lait. tremper les tranches de pain. Le cuire au four pendant environ
+                10 minutes à 180°. Servir
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Pain</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">6 tranches</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Lait</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">25 cl</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Oeuf</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">3</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Sucre roux</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">75 grammes</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette39.jpg"
+              alt="Crumble aux pommes"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">40min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Crumble aux pommes</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Découper les pommes en dé. Mélanger dans un saladier la farine, le sucre et le beurre. Bien mélanger.
+                Beurrer le moule et ajouter les pommes. Par dessus placez la pate que vous avez obtenu. Cuire 20 minutes
+                au four
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Pomme</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">2</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Farine</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">100 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Beurre</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">50 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Sucre roux</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">80 grammes</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img src="/src/assets/images/recipes_min/Recette40.jpg" alt="Limonade" class="h-full w-full object-cover" />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">10min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Limonade</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Dans un saladier mettre l'eau, le jus des citrons et le sucre. Bien mélanger. Ajouter le bicarbonate.
+                Servir. Ajouter des glaçon et une feuille de menthe pour la déco.
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Eau</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1 Litres</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Citron Vert</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">3</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Sucre en poudre</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">4 cuillères à café</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Bicarbonate</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1 cuillères à café</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette41.jpg"
+              alt="Mousse au chocolat"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">20min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Mousse au chocolat</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Séparer les blancs d'oeufs. Faire fondre le chocolat au bain marie. Ajouter les jaunes et le sucre au
+                chocolat hors du feu. Battre les blancs en neige. Ajouter les blancs au mélange de chocolat. Mélangez
+                délicatement avec une spatule. Servir dans un plat ou dans des verres. Mettre au frais
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Oeuf</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">3</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Chocolat noir</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">100 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Sucre vanillé</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1 sachets</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette42.jpg"
+              alt="Charlotte au poires"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">60min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Charlotte au poires</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Commencez par préparer la mousse au chocolat au moins 2 heures avant. Quand la mousse est prête et a
+                reposée. Alors mouiller les boudoirs dans le jus des poires. Disposer. Alterner : mousse au chocolat,
+                boudoirs et poires. Mettre au frais.
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Chocolat</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">200 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Oeuf</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">3</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Poires au jus</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">0.5 boites</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Boudoirs</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">15</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette43.jpg"
+              alt="Tarte au citron"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">50min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Tarte au citron</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Préchauffez le fours à 200°. Étaler la pate. La mettre dans un moule. Battre les oeufs avec le sucre.
+                Ajouter le jus de citron et le beurre. Verser le tout sur la pate. Au four 30 minutes. Bon appetit
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Pâte brisée</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">200 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Sucre</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">150 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Beurre fondu</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">100 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Oeuf</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">3</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Citron</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette44.jpg"
+              alt="Crème dessert au chocolat"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">15min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Crème dessert au chocolat</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Mélanger la farine et le beurre fondu en ajoutant le lait peu à peu. Ajouter du sucre après la cuisson.
+                Bien mélanger. Ajouter le chocolat en morceaux et laisser chauffer 8 minutes en mélangeant avec une
+                cuillère en bois. Mettre dans des verres
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Lait</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1 litres</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Chocolat</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">200 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Sucre</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">100 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Beurre</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">50 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">farine</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">40 grammes</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette45.jpg"
+              alt="Crème pâtissière"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">30min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Crème pâtissière</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Faire bouillir le lait ( on peut y ajouter de l'essence de vanille. Battre les oeufs et le sucre,
+                ajouter la farine puis finalement ajouter le lait chaud. Remettre à feu doux pour faire épaissir en
+                remuant pendant 5 à 10 minutes.
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Lait</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">50 cl</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Oeuf</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">2</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Farine</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">30 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Sucre</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">80 grammes</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette46.jpg"
+              alt="Far breton"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">60min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Far breton</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Mélanger la farine avec le sucre et les oeufs en ajoutant du sucre vanillé. Ajouter le lait petit à
+                petit. Ajouter un petit vers de rhum. Verser la masse dans un plat beurré y placer les pruneaux et faire
+                cuire à 200° pendant 45 minutes
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Farine</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">250 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Sucre</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">150 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Sucre vanillé</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1 sachets</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Oeuf</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">4</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Lait</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1 litre</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Pruneaux</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">100 grammes</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette47.jpg"
+              alt="Mousse au citron"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">5min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Mousse au citron</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Mélanger le jus de citron avec le sucre et la mascarpone. Ajouter la crème fraîche. Mélanger le tout et
+                mettre au congélateur pendant 1 heure. Servir
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Jus de citron</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">100 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Mascarpone</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">250 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Sucre</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">100 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Crème Fraîche</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">20 cl</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img src="/src/assets/images/recipes_min/Recette48.jpg" alt="Pizza" class="h-full w-full object-cover" />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">40min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Pizza</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Étaler la pate a pizza. Écraser les tomates pelées, les étaler sur la pâte, ajouter les lardons et les
+                champignons. Ajouter le gruyère eet passer au four à 220° durant 20 minutes
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Pâte à pizza</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Tomates pelées</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1 boites</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Lardons</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1 barquettes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Champignons de paris</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1 boites</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Gruyère</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">200 grammes</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette49.jpg"
+              alt="Smoothie tropical"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">0min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Smoothie tropical</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Découper les fruits. Le passer au blender jusqu'à obtenir une texture liquide. Mettre au frais. Servir
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Bananes</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">2</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Kiwis</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">3</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Mangue</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">1</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Ananas</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">4 tranches</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Miel</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">2 cuillères à soupe</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">
+          <div class="relative h-[253px] bg-white">
+            <img
+              src="/src/assets/images/recipes_min/Recette50.jpg"
+              alt="Frangipane"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute flex items-center top-5.5 right-6 rounded-full bg-[#FFD15B]">
+              <span class="recipe-tag px-3.5 py-1 text-[#1B1B1B] text-[12px]">60min</span>
+            </div>
+          </div>
+          <div class="p-[23px] pt-[30px]">
+            <h2 class="font-[Anton] text-black text-[18px] mb-2">Frangipane</h2>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">RECETTE</h3>
+              <p class="text-[#1B1B1B] text-[14px] mt-[13px] h-[76px] leading-[19px] line-clamp-4 overflow-hidden">
+                Préparer la frangipane : Mélanger le sucre la poudre d'amandes, le beurre et les oeufs. Étaler la moitié
+                de la pate feuilleté et mettre dans un moule à tarte. Garnir de frangipane et recouvrir du reste de pate
+                feuilletée. Mettre au four 30 minutes
+              </p>
+            </div>
+            <div class="mt-[30px]">
+              <h3 class="uppercase text-[12px] text-[#7A7A7A] tracking-[9%] font-[700]">INGRÉDIENTS</h3>
+              <div class="grid grid-cols-2 gap-x-[23px] gap-y-[17px] mt-[15px]">
+                <div>
+                  <p class="text-[14px] font-[500]">Pâte feuilletée</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">400 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Oeuf</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">6</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Poudre d'amendes</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">500 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Beurre</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">500 grammes</p>
+                </div>
+
+                <div>
+                  <p class="text-[14px] font-[500]">Sucre glace</p>
+                  <p class="text-[14px] font-[500] text-[#7A7A7A]">500 grammes</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Code injected by live-server -->
+    <script>
+      // <![CDATA[  <-- For SVG support
+      if ("WebSocket" in window) {
+        (function () {
+          function refreshCSS() {
+            var sheets = [].slice.call(document.getElementsByTagName("link"));
+            var head = document.getElementsByTagName("head")[0];
+            for (var i = 0; i < sheets.length; ++i) {
+              var elem = sheets[i];
+              var parent = elem.parentElement || head;
+              parent.removeChild(elem);
+              var rel = elem.rel;
+              if ((elem.href && typeof rel != "string") || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+                var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, "");
+                elem.href = url + (url.indexOf("?") >= 0 ? "&" : "?") + "_cacheOverride=" + new Date().valueOf();
+              }
+              parent.appendChild(elem);
+            }
+          }
+          var protocol = window.location.protocol === "http:" ? "ws://" : "wss://";
+          var address = protocol + window.location.host + window.location.pathname + "/ws";
+          var socket = new WebSocket(address);
+          socket.onmessage = function (msg) {
+            if (msg.data == "reload") window.location.reload();
+            else if (msg.data == "refreshcss") refreshCSS();
+          };
+          if (sessionStorage && !sessionStorage.getItem("IsThisFirstTime_Log_From_LiveServer")) {
+            console.log("Live reload enabled.");
+            sessionStorage.setItem("IsThisFirstTime_Log_From_LiveServer", true);
+          }
+        })();
+      } else {
+        console.error("Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.");
+      }
+      // ]]>
+    </script>
+
+    <script type="module" src="./js/init.js"></script>
+  </body>
+</html>
