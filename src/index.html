@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Les Petits Plats</title>
+    <link rel="icon" href="data:," />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -77,22 +78,22 @@
       </div>
     </header>
     <!-- #################### Filters Section #################### -->
-    <section class="container mx-auto max-w-full bg-[#EDEDED] pt-[21px] px-[104px] text-[16px] z-0">
+    <div class="container mx-auto max-w-full bg-[#EDEDED] pt-[21px] px-[104px] text-[16px] z-0">
       <!-- ==================== Filters Header ==================== -->
       <div class="flex justify-between h-[56px]">
-        <!-- -------------------- Dropdowns group -------------------- -->
+        <!--  Dropdowns group  -->
 
         <div id="filter-dropdowns-section" class="flex justify-start gap-[65px] z-1">
           <!--  Dropdown Filter 1  -->
         </div>
-        <!-- -------------------- Recipe Count -------------------- -->
+        <!--  Recipe Count  -->
         <div class="ml-auto flex items-center">
           <span id="recipe-count" class="font-[Anton] text-[21px] text-[#1B1B1B] pt-[10px]">1500 recettes</span>
         </div>
       </div>
       <!-- ==================== Selected Filters Tags ==================== -->
       <div id="filter-tags-section" class="flex flex-wrap gap-[10px] pt-[20px]"></div>
-    </section>
+    </div>
 
     <!-- #################### Main - Recipe Cards #################### -->
 
@@ -100,5 +101,5 @@
       <div id="recipes-section" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[50px]"></div>
     </main>
   </body>
-  <script type="module" src="./js/init.js"></script>
+  <script type="module" src="./js/main.js"></script>
 </html>
