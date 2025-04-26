@@ -1,5 +1,10 @@
 import { ingredientListFactory } from "./ingredientListFactory.js";
 
+/**
+ * Creates an HTML card for a recipe based on the provided recipe data.
+ * @param {Object} recipe - The recipe object containing the name, image, time, description, and ingredients.
+ * @returns {string} - The HTML markup for the recipe card.
+ */
 export function recipeCardFactory(recipe) {
   return `
     <div class="bg-white rounded-[21px] overflow-hidden shadow min-h-[731px]">

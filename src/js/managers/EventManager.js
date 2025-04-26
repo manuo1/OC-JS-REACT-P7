@@ -2,13 +2,27 @@ import { DROPDOWN_FILTER_SECTION, FILTER_TYPES } from "../../config/config.js";
 const mainSearchInput = document.getElementById("main-search-bar-input");
 const mainSearchClearButton = document.getElementById("main-search-clear");
 
+/**
+ * Manages the events related to filters, main search input, and filter tags in the application.
+ * Handles toggling of dropdowns, adding/removing selected filters, and updating the recipes displayed.
+ */
 class EventManager {
+  /**
+   * Initializes the EventManager with references to the SearchManager, FilterManager, and RecipeManager.
+   * @param {SearchManager} searchManager - The instance of the SearchManager to manage search results.
+   * @param {FilterManager} filterManager - The instance of the FilterManager to manage filters.
+   * @param {RecipeManager} recipeManager - The instance of the RecipeManager to manage recipe display.
+   */
   constructor(searchManager, filterManager, recipeManager) {
     this.searchManager = searchManager;
     this.filterManager = filterManager;
     this.recipeManager = recipeManager;
   }
 
+  /**
+   * Initializes the toggle behavior for the filter dropdowns.
+   * Each dropdown can be opened or closed by clicking the corresponding filter button.
+   */
   filterDropdowns_initToggles() {
     const keys = FILTER_TYPES.map((filterType) => filterType.key);
 
@@ -36,6 +50,10 @@ class EventManager {
     });
   }
 
+  /**
+   * Updates all filters and recipes on the page.
+   * This includes updating the main search results, the filtered recipes, and the filter dropdowns.
+   */
   page_updateFiltersAndRecipes() {
     this.searchManager.updateMainSearchResults();
     this.searchManager.updateFilteredRecipes();
@@ -43,6 +61,10 @@ class EventManager {
     this.recipeManager.recipes_addToDOM(this.searchManager.mainSearchText);
   }
 
+  /**
+   * Handles click events to add an available item (e.g., ingredient, appliance) to the selected list in the dropdowns.
+   * This triggers an update of the filters and recipes.
+   */
   filterDropdowns_onClickAddAvailableToSelected() {
     FILTER_TYPES.forEach((filterType) => {
       const ul = document.getElementById(`${filterType.key}-${DROPDOWN_FILTER_SECTION.available}`);
@@ -59,6 +81,10 @@ class EventManager {
     });
   }
 
+  /**
+   * Handles click events to remove an item from the selected list in the dropdowns.
+   * This triggers an update of the filters and recipes.
+   */
   filterDropdowns_onClickRemoveItemFromSelected() {
     FILTER_TYPES.forEach((filterType) => {
       const ul = document.getElementById(`${filterType.key}-${DROPDOWN_FILTER_SECTION.selected}`);
@@ -74,6 +100,10 @@ class EventManager {
     });
   }
 
+  /**
+   * Filters the available items in the dropdowns according to the input search.
+   * This triggers an update of the filters and recipes.
+   */
   filterDropdowns_filterAvailableAccordingToInput() {
     FILTER_TYPES.forEach((filterType) => {
       const input = document.getElementById(`${filterType.key}-search`);
@@ -84,6 +114,10 @@ class EventManager {
     });
   }
 
+  /**
+   * Handles the click event to clear the input value in a filter dropdown.
+   * This triggers an update of the filters and recipes.
+   */
   filterDropdowns_onClickClearInput() {
     FILTER_TYPES.forEach((filterType) => {
       const clearButton = document.getElementById(`${filterType.key}-search-clear`);
@@ -95,6 +129,10 @@ class EventManager {
     });
   }
 
+  /**
+   * Handles the click event to remove a filter tag from the page.
+   * This triggers an update of the filters and recipes.
+   */
   filterTags_OnClickRemoveTag() {
     const filterTagsSection = document.getElementById("filter-tags-section");
 
@@ -111,6 +149,10 @@ class EventManager {
     });
   }
 
+  /**
+   * Initializes the main search input to listen for user input and update the main search text value.
+   * This triggers an update of the filters and recipes.
+   */
   mainSearch_init() {
     mainSearchInput.addEventListener("input", (e) => {
       this.searchManager.setMainSearchTextValue(e.target.value.trim());
@@ -118,6 +160,10 @@ class EventManager {
     });
   }
 
+  /**
+   * Handles the click event to clear the main search input field.
+   * This triggers an update of the filters and recipes.
+   */
   mainSearch_onClickClearInput() {
     mainSearchClearButton.addEventListener("click", () => {
       mainSearchInput.value = "";

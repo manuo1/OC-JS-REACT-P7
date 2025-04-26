@@ -1,3 +1,9 @@
+/**
+ * Creates a selected item element to be displayed in a list, with a remove button.
+ *
+ * @param {string} value - The value of the selected item, which will be displayed inside the list item.
+ * @returns {HTMLElement} - The HTML `li` element representing the selected item, including a remove button.
+ */
 function createSelectedItem(value) {
   const li = document.createElement("li");
   li.className =

@@ -1,5 +1,12 @@
 import { DROPDOWN_FILTER_SECTION as section } from "../../../../config/config.js";
-
+/**
+ * Creates a filter dropdown with a search bar, selected items list, and available options list.
+ *
+ * @param {Object} filterType - The filter type configuration object.
+ * @param {string} filterType.key - The unique key identifying the filter.
+ * @param {string} filterType.label - The label displayed for the filter.
+ * @returns {HTMLElement} - The HTML container for the filter dropdown.
+ */
 function createFilterDropdown(filterType) {
   const { key = null, label = null } = filterType;
   const container = document.createElement("div");

@@ -1,3 +1,9 @@
+/**
+ * Creates a filter tag element with a value and a remove button.
+ *
+ * @param {string} value - The value of the filter tag, which will be displayed inside the tag.
+ * @returns {HTMLElement} - The HTML element representing the filter tag.
+ */
 function createFilterTag(value) {
   const tag = document.createElement("div");
   tag.className =

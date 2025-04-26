@@ -1,5 +1,12 @@
 import { escapeHtml } from "../../../utils/utils.js";
 
+/**
+ * Generates the HTML markup for a "no recipes found" message.
+ * This is displayed when no recipe matches the main search text.
+ *
+ * @param {string} mainSearchText - The text entered by the user in the search bar.
+ * @returns {string} - The HTML string for the "no recipes" message.
+ */
 function noRecipeFactory(mainSearchText) {
   return `
    

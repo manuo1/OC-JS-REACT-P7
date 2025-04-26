@@ -3,6 +3,12 @@ import { SearchManager } from "./managers/SearchManager.js";
 import { EventManager } from "./managers/EventManager.js";
 import { RecipeManager } from "./managers/RecipeManager.js";
 
+/**
+ * Initializes the page once the DOM is loaded:
+ * - Creates manager instances
+ * - Renders recipes and filters
+ * - Sets up all event listeners
+ */
 function initPage() {
   const filterManager = new FilterManager();
   const searchManager = new SearchManager();
