@@ -1,7 +1,7 @@
-import { FilterManager } from "./services/FilterManager.js";
-import { SearchManager } from "./services/SearchManager.js";
-import { EventManager } from "./services/EventManager.js";
-import { RecipeManager } from "./services/RecipeManager.js";
+import { FilterManager } from "./managers/FilterManager.js";
+import { SearchManager } from "./managers/SearchManager.js";
+import { EventManager } from "./managers/EventManager.js";
+import { RecipeManager } from "./managers/RecipeManager.js";
 
 function initPage() {
   const filterManager = new FilterManager();

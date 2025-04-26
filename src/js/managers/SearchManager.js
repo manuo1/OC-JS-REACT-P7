@@ -7,8 +7,8 @@ import {
   getUnselectedItemsFromRecipes,
   getFilteredItemsBySearchInput,
   recipeHasAllSelectedItems,
-} from "./recipes.js";
-import { refreshRecipesByMainSearch } from "./mainSearch.js";
+} from "../services/recipes.js";
+import { refreshRecipesByMainSearch } from "../services/mainSearch.js";
 class SearchManager {
   constructor() {
     // main search

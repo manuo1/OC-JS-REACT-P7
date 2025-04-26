@@ -3,7 +3,7 @@ import { createSelectedItem } from "../components/filterDropdown/factory/selecte
 import { createAvailableItem } from "../components/filterDropdown/factory/availableItemFactory.js";
 import { createFilterTag } from "../components/filterTags/factory/create-filter-tags.js";
 import { INGREDIENTS, APPLIANCE, USTENSILS, DROPDOWN_FILTER_SECTION, FILTER_TYPES } from "../../config/config.js";
-import { dropdowns_addItems } from "./filters.js";
+import { dropdowns_addItems } from "../services/filters.js";
 class FilterManager {
   constructor() {
     this.dropdowns = this.createFilterDropdowns();
